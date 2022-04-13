@@ -1,0 +1,25 @@
+{
+  "name": "@sbinft/contracts",
+  "version": "1.0.0",
+  "description": "Open source contracts by SBINFT",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/gobase/sbinft-contracts.git"
+  },
+  "keywords": [
+    "solidity",
+    "ethereum",
+    "smart",
+    "contracts",
+    "nft"
+  ],  
+  "author": "SBINFT",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/gobase/sbinft-contracts/issues"
+  },
+  "homepage": "https://github.com/gobase/sbinft-contracts#readme"
+}
