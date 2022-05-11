@@ -379,3 +379,5 @@ cache
 artifacts
 coverage
 coverage.json
+
+typechain
