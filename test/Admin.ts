@@ -1,42 +1,41 @@
 import { ethers, waffle } from "hardhat";
 import { expect } from "chai";
 import { SignerWithAddress } from "@nomiclabs/hardhat-ethers/signers";
-import { Admin } from "../typechain";
+import { AdminMock } from "../typechain";
 
 describe("Admin", function () {
   let ContractOwner: SignerWithAddress,
     Address1: SignerWithAddress,
     Address2: SignerWithAddress,
-    Address3: SignerWithAddress,
-    Address4: SignerWithAddress;
-  let zeroAddress: string;
-  zeroAddress = "0x0000000000000000000000000000000000000000";
+    Address3: SignerWithAddress;
 
-  let cAdminContract: Admin;
+  let cAdminContract: AdminMock;
+  const zeroAddress = "0x0000000000000000000000000000000000000000";
 
   beforeEach(async function () {
-    [ContractOwner, Address1, Address2, Address3, Address4] =
-      await ethers.getSigners();
+    [ContractOwner, Address1, Address2, Address3] = await ethers.getSigners();
 
-    const cfAdminContract = await ethers.getContractFactory("Admin");
+    const cfAdminContract = await ethers.getContractFactory("AdminMock");
 
     cAdminContract = await cfAdminContract.deploy();
   });
 
-  describe("addMultiAdmin", function () {
+  describe("batchAddAdmin", function () {
     it("can add admin", async function () {
-      await cAdminContract.addMultiAdmin([Address1.address, Address2.address]);
+      await cAdminContract.batchAddAdmin([Address1.address, Address2.address]);
       expect(await cAdminContract.isAdmin(Address2.address)).to.equal(true);
       expect(await cAdminContract.isAdmin(Address1.address)).to.equal(true);
     });
+
     it("[R]can not add admin from non admin signer", async function () {
       await expect(
         cAdminContract
           .connect(Address1)
-          .addMultiAdmin([Address2.address, Address3.address])
+          .batchAddAdmin([Address2.address, Address3.address])
       ).to.be.revertedWith("Admin:onlyAdmin caller is not an Admin");
     });
   });
+
   describe("addAdmin", function () {
     it("can add admin", async function () {
       await cAdminContract.addAdmin(Address1.address);
