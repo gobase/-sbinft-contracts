@@ -23,6 +23,20 @@ describe("Admin", function () {
     cAdminContract = await cfAdminContract.deploy();
   });
 
+  describe("addMultiAdmin", function () {
+    it("can add admin", async function () {
+      await cAdminContract.addMultiAdmin([Address1.address, Address2.address]);
+      expect(await cAdminContract.isAdmin(Address2.address)).to.equal(true);
+      expect(await cAdminContract.isAdmin(Address1.address)).to.equal(true);
+    });
+    it("[R]can not add admin from non admin signer", async function () {
+      await expect(
+        cAdminContract
+          .connect(Address1)
+          .addMultiAdmin([Address2.address, Address3.address])
+      ).to.be.revertedWith("Admin:onlyAdmin caller is not an Admin");
+    });
+  });
   describe("addAdmin", function () {
     it("can add admin", async function () {
       await cAdminContract.addAdmin(Address1.address);
@@ -40,20 +54,32 @@ describe("Admin", function () {
     });
   });
   describe("removeAdmin", function () {
-    it("can add admin", async function () {
+    it("can remove admin", async function () {
       await cAdminContract.addAdmin(Address1.address);
       expect(await cAdminContract.isAdmin(Address1.address)).to.equal(true);
+      await cAdminContract.removeAdmin(Address1.address);
+      expect(await cAdminContract.isAdmin(Address1.address)).to.equal(false);
     });
-    
+    it("[R]can not remove admin from non admin signer", async function () {
+      await expect(
+        cAdminContract.connect(Address1).removeAdmin(Address2.address)
+      ).to.be.revertedWith("Admin:onlyAdmin caller is not an Admin");
+    });
+    it("[R]can not remove admin non admin signer", async function () {
+      await cAdminContract.addAdmin(Address1.address);
+      await expect(
+        cAdminContract.connect(Address1).removeAdmin(Address2.address)
+      ).to.be.revertedWith(
+        "Admin:removeAdmin trying to remove non existing Admin"
+      );
+    });
   });
   describe("isAdmin", function () {
-    it("check Contract Owner", async function () {
+    it("check admin ", async function () {
       expect(await cAdminContract.isAdmin(ContractOwner.address)).to.equal(
         true
       );
-      expect(await cAdminContract.isAdmin(Address1.address)).to.equal(
-        false
-      );
+      expect(await cAdminContract.isAdmin(Address1.address)).to.equal(false);
     });
   });
 });
