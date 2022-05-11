@@ -22,7 +22,7 @@ abstract contract Admin is Context {
   /**
    * @dev 管理者を複数追加
    */
-  function batchAddAdmin(address[] calldata newAdmin) public onlyAdmin {
+  function batchAddAdmin(address[] calldata newAdmin) public virtual onlyAdmin {
     for (uint256 idx = 0; idx < newAdmin.length; idx++) {
       _addAdmin(newAdmin[idx]);
     }
@@ -31,7 +31,7 @@ abstract contract Admin is Context {
   /**
    * @dev 管理者を一人追加
    */
-  function addAdmin(address newAdmin) public onlyAdmin {
+  function addAdmin(address newAdmin) public virtual onlyAdmin {
     require(
       newAdmin != address(0),
       "Admin:addAdmin newAdmin is the zero address"
@@ -44,7 +44,7 @@ abstract contract Admin is Context {
    * @dev 管理者を一人追加
    * 無制限 Internal function
    */
-  function _addAdmin(address newAdmin) internal {
+  function _addAdmin(address newAdmin) internal virtual {
     _admin[newAdmin] = true;
     emit AdminAdded(newAdmin);
   }
@@ -52,7 +52,7 @@ abstract contract Admin is Context {
   /**
    * @dev 管理者を一人削除
    */
-  function removeAdmin(address admin) public onlyAdmin {
+  function removeAdmin(address admin) public virtual onlyAdmin {
     require(
       _admin[admin],
       "Admin:removeAdmin trying to remove non existing Admin"
@@ -65,7 +65,7 @@ abstract contract Admin is Context {
    * @dev 管理者を一人削除
    * 無制限 Internal function
    */
-  function _removeAdmin(address admin) internal {
+  function _removeAdmin(address admin) internal virtual {
     delete _admin[admin];
     emit AdminRemoved(admin);
   }
@@ -74,7 +74,7 @@ abstract contract Admin is Context {
    * @dev
    * Adminかどうかのチェック
    */
-  function isAdmin(address checkAdmin) public view returns (bool) {
+  function isAdmin(address checkAdmin) public view virtual returns (bool) {
     return _admin[checkAdmin];
   }
 
