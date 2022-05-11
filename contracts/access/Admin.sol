@@ -1,32 +1,35 @@
 //SPDX-License-Identifier: MIT
 pragma solidity ^0.8.0;
 
-import "@openzeppelin/contracts/access/Ownable.sol";
+import "@openzeppelin/contracts/utils/Context.sol";
 
-contract Admin is Ownable {
+abstract contract Admin is Context {
   event AdminAdded(address);
   event AdminRemoved(address);
 
-  //Permitted Admin map
+  /**
+   * @dev 管理者のマッピング。管理者でないならばfalseを返す。
+   */
   mapping(address => bool) private _admin;
 
+  /**
+   * @dev デプロイ時にデプロイ者を管理者に追加する。
+   */
   constructor() {
     _addAdmin(_msgSender());
   }
 
   /**
-   * @dev
-   * 複数Admin権限者を追加
+   * @dev 管理者を複数追加
    */
-  function addMultiAdmin(address[] memory newAdmin) public onlyAdmin {
+  function batchAddAdmin(address[] calldata newAdmin) public onlyAdmin {
     for (uint256 idx = 0; idx < newAdmin.length; idx++) {
-      addAdmin(newAdmin[idx]);
+      _addAdmin(newAdmin[idx]);
     }
   }
 
   /**
-   * @dev
-   * Admin権限者を追加
+   * @dev 管理者を一人追加
    */
   function addAdmin(address newAdmin) public onlyAdmin {
     require(
@@ -38,8 +41,7 @@ contract Admin is Ownable {
   }
 
   /**
-   * @dev
-   * Admin権限者を追加
+   * @dev 管理者を一人追加
    * 無制限 Internal function
    */
   function _addAdmin(address newAdmin) internal {
@@ -48,8 +50,7 @@ contract Admin is Ownable {
   }
 
   /**
-   * @dev
-   * Admin権限者を削除
+   * @dev 管理者を一人削除
    */
   function removeAdmin(address admin) public onlyAdmin {
     require(
@@ -57,6 +58,14 @@ contract Admin is Ownable {
       "Admin:removeAdmin trying to remove non existing Admin"
     );
 
+    _removeAdmin(admin);
+  }
+
+  /**
+   * @dev 管理者を一人削除
+   * 無制限 Internal function
+   */
+  function _removeAdmin(address admin) internal {
     delete _admin[admin];
     emit AdminRemoved(admin);
   }
