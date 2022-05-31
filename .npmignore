@@ -17,3 +17,11 @@ yarn.lock
 # Ignored Solidity files
 contracts/mocks/AdminMock.sol
 contracts/upgradeable/mock/AdminUpgradeableMock.sol
+
+#Hardhat files
+cache
+artifacts
+cache-zk
+artifacts-zk
+coverage
+coverage.json
