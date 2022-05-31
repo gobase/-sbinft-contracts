@@ -4,6 +4,7 @@
   "description": "Open source contracts by SBINFT",
   "author": "SBINFT",
   "license": "MIT",
+  "private": false,
   "scripts": {
     "clean": "hardhat clean && rimraf cache build contracts/build",
     "lint": "yarn run lint:ts && yarn run lint:sol",
