@@ -1,0 +1,3 @@
+# Ignored Solidity files
+mocks
+upgradeable/mocks
