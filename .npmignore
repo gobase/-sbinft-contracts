@@ -1,3 +1,19 @@
 hardhat.config.ts
 scripts
 test
+packages
+typechain
+tsconfig.json
+yarn.lock
+.env.example
+.eslintignore
+.eslintrc.js
+.nvmrc
+.prettierignore
+.prettierrc
+.solhint.json
+.solhintignore
+
+# Ignored Solidity files
+contracts/mocks/AdminMock.sol
+contracts/upgradeable/mock/AdminUpgradeableMock.sol

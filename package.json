@@ -1,14 +1,9 @@
 {
-  "name": "sbinft-contracts",
-  "description": "Secure Smart Contract library for Solidity",
-  "license": "MIT",
-  "keywords": [
-    "solidity",
-    "ethereum",
-    "smart",
-    "contracts",
-    "security"
-  ],
+  "name": "@sbinft/contracts-test",
+  "version": "1.0.0",
+  "description": "Open source contracts by SBINFT",
+  "author": "SBINFT",
+  "license": "MIT",  
   "scripts": {
     "clean": "hardhat clean && rimraf cache build contracts/build",
     "lint": "yarn run lint:ts && yarn run lint:sol",
@@ -59,5 +54,20 @@
   "dependencies": {
     "@openzeppelin/contracts": "^4.6.0",
     "@openzeppelin/contracts-upgradeable": "^4.6.0"
-  }
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/gobase/sbinft-contracts.git"
+  },
+  "keywords": [
+    "solidity",
+    "ethereum",
+    "smart",
+    "contracts",
+    "nft"
+  ],
+  "bugs": {
+    "url": "https://github.com/gobase/sbinft-contracts/issues"
+  },
+  "homepage": "https://github.com/gobase/sbinft-contracts#readme"
 }
