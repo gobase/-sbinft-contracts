@@ -1,9 +1,9 @@
 {
   "name": "@sbinft/contracts-test",
-  "version": "1.0.0",
+  "version": "2.0.0",
   "description": "Open source contracts by SBINFT",
   "author": "SBINFT",
-  "license": "MIT",  
+  "license": "MIT",
   "scripts": {
     "clean": "hardhat clean && rimraf cache build contracts/build",
     "lint": "yarn run lint:ts && yarn run lint:sol",
