@@ -1,10 +1,14 @@
-hardhat.config.ts
+# ディレクトリ毎
 scripts
 test
 packages
 typechain
+
+# ファイル毎
+hardhat.config.ts
 tsconfig.json
 yarn.lock
+.env
 .env.example
 .eslintignore
 .eslintrc.js
@@ -14,10 +18,6 @@ yarn.lock
 .solhint.json
 .solhintignore
 
-# Ignored Solidity files
-contracts/mocks/AdminMock.sol
-contracts/upgradeable/mock/AdminUpgradeableMock.sol
-
 #Hardhat files
 cache
 artifacts
@@ -25,3 +25,7 @@ cache-zk
 artifacts-zk
 coverage
 coverage.json
+
+# Ignored Solidity files
+contracts/mocks/AdminMock.sol
+contracts/upgradeable/mock/AdminUpgradeableMock.sol
