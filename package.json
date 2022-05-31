@@ -1,6 +1,6 @@
 {
-  "name": "@sbinft/contracts-test",
-  "version": "2.0.2",
+  "name": "@sbinft/contracts",
+  "version": "1.0.0",
   "description": "Open source contracts by SBINFT",
   "author": "SBINFT",
   "license": "MIT",
@@ -20,6 +20,9 @@
     "gas-report": "env REPORT_GAS=true yarn run test",
     "compile": "hardhat compile",
     "prepare": "yarn run clean && env COMPILE_MODE=production yarn run compile",
+    "prepublish": "echo \"prepublish未実装\" && exit 1",
+    "publish": "np --any-branch --no-2fa",
+    "postpublish": "echo \"postpublish未実装\" && exit 1",
     "deploy": "echo \"deploy未実装\" && exit 1"
   },
   "devDependencies": {
