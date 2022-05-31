@@ -27,5 +27,5 @@ coverage
 coverage.json
 
 # Ignored Solidity files
-contracts/mocks/AdminMock.sol
-contracts/upgradeable/mock/AdminUpgradeableMock.sol
+contracts/mocks
+contracts/upgradeable/mocks
