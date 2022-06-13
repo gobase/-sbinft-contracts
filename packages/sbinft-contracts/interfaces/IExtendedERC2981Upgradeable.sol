@@ -22,12 +22,10 @@ interface IExtendedERC2981Upgradeable is IERC2981Upgradeable {
     address _token,
     uint256 _tokenId,
     uint256 _salePrice
-  )
-    external
-    returns (address[] memory receivers, uint256[] memory royaltyFees);
+  ) external returns (address[] memory receivers, uint256[] memory royaltyFees);
 
   /**
    * @dev Returns the division factor for calculating precentage
    */
-  function feeDenominator() external returns (uint16);  
+  function feeDenominator() external returns (uint16);
 }
