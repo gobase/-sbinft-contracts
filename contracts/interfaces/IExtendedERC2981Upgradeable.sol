@@ -21,7 +21,8 @@ interface IExtendedERC2981Upgradeable is IERC2981Upgradeable {
   function royaltyInfo(
     address _token,
     uint256 _tokenId,
-    uint256 _salePrice
+    uint256 _salePrice,
+    bool _isSecondarySale
   ) external returns (address[] memory receivers, uint256[] memory royaltyFees);
 
   /**
