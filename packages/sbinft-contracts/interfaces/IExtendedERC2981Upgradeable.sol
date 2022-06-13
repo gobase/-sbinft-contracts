@@ -25,4 +25,9 @@ interface IExtendedERC2981Upgradeable is IERC2981Upgradeable {
   )
     external
     returns (address[] memory receivers, uint256[] memory royaltyFees);
+
+  /**
+   * @dev Returns the division factor for calculating precentage
+   */
+  function feeDenominator() external returns (uint16);  
 }
