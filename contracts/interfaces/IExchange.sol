@@ -2,7 +2,7 @@
 
 pragma solidity ^0.8.9;
 
-import "./OrderDomain.sol";
+import "../library/OrderDomain.sol";
 
 /**
  * @title SBINFT Exchange protocol
