@@ -13,7 +13,7 @@ import "@openzeppelin/contracts-upgradeable/interfaces/IERC2981Upgradeable.sol";
  *
  * _Available since v4.5._
  */
-interface IExtendedERC2981Upgradeable is IERC2981Upgradeable {
+interface IRoyaltyRegistry is IERC2981Upgradeable {
   /**
    * @dev Returns how much royalty is owed and to whom, based on a sale price that may be denominated in any unit of
    * exchange. The royalty amount is denominated and should be paid in that same unit of exchange.
