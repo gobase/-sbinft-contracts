@@ -12,12 +12,7 @@ abstract contract AdminUpgradeable is ContextUpgradeable {
    */
   mapping(address => bool) private _admin;
 
-  /// @custom:oz-upgrades-unsafe-allow constructor
-  constructor() {
-    _disableInitializers();
-  }
-
-  function initialize() public virtual initializer {
+  function __Admin_init() internal onlyInitializing {
     __Context_init();
     // 初期化時にデプロイ者を管理者に追加する。
     _addAdmin(_msgSender());
