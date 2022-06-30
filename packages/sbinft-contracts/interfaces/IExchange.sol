@@ -2,14 +2,14 @@
 
 pragma solidity ^0.8.9;
 
-import "@openzeppelin/contracts-upgradeable/interfaces/IERC2981Upgradeable.sol";
+import "@openzeppelin/contracts-upgradeable/interfaces/IERC165Upgradeable.sol";
 
 import "../library/OrderDomain.sol";
 
 /**
  * @title SBINFT Exchange protocol
  */
-interface IExchange is IERC2981Upgradeable {
+interface IExchange is IERC165Upgradeable {
   // Emits whenever there is a exchange/sale
   event Sale(uint256 indexed nounce);
   // Emits whenever an order gets cancelled
