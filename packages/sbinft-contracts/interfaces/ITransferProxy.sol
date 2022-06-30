@@ -5,12 +5,12 @@ pragma solidity ^0.8.9;
 import "@openzeppelin/contracts/token/ERC20/IERC20.sol";
 import "@openzeppelin/contracts/token/ERC721/IERC721.sol";
 import "@openzeppelin/contracts/token/ERC1155/IERC1155.sol";
-import "@openzeppelin/contracts-upgradeable/interfaces/IERC2981Upgradeable.sol";
+import "@openzeppelin/contracts-upgradeable/interfaces/IERC165Upgradeable.sol";
 
 /**
  * @title  SBINFT market non-native asset transfer protocol
  */
-interface ITransferProxy is IERC2981Upgradeable {
+interface ITransferProxy is IERC165Upgradeable {
   /**
    * @notice Safe transfer ERC20 token
    * @dev only registered operators could call this function(i.e. Exchange)
