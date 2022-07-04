@@ -10,7 +10,6 @@ describe("Admin", function () {
     Address3: SignerWithAddress;
 
   let cAdminContract: AdminMock;
-  const zeroAddress = "0x0000000000000000000000000000000000000000";
 
   beforeEach(async function () {
     [ContractOwner, Address1, Address2, Address3] = await ethers.getSigners();
@@ -21,11 +20,24 @@ describe("Admin", function () {
   });
 
   describe("after deploy", function () {
-    it("TODO: check deployer is an admin");
+    it("check deployer is an admin", async function () {
+      expect(await cAdminContract.isAdmin(ContractOwner.address)).to.equal(
+        true
+      );
+    });
   });
 
   describe("batchAddAdmin", function () {
-    it("TODO: check adding zero address as admin");
+    it("check adding zero address as admin", async function () {
+      await cAdminContract.batchAddAdmin([
+        ethers.constants.AddressZero,
+        Address1.address,
+      ]);
+      expect(await cAdminContract.isAdmin(Address1.address)).to.equal(true);
+      expect(
+        await cAdminContract.isAdmin(ethers.constants.AddressZero)
+      ).to.equal(false);
+    });
 
     it("can add admin", async function () {
       await cAdminContract.batchAddAdmin([Address1.address, Address2.address]);
@@ -52,9 +64,9 @@ describe("Admin", function () {
     });
 
     it("[R]can not add admin zero address", async function () {
-      await expect(cAdminContract.addAdmin(zeroAddress)).to.be.revertedWith(
-        "Admin:addAdmin newAdmin is the zero address"
-      );
+      await expect(
+        cAdminContract.addAdmin(ethers.constants.AddressZero)
+      ).to.be.revertedWith("Admin:addAdmin newAdmin is the zero address");
     });
 
     it("can add admin", async function () {
