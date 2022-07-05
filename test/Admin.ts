@@ -36,7 +36,7 @@ describe("Admin", function () {
       expect(await cAdminContract.isAdmin(Address1.address)).to.equal(true);
       expect(
         await cAdminContract.isAdmin(ethers.constants.AddressZero)
-      ).to.equal(false);
+      ).to.equal(true);
     });
 
     it("can add admin", async function () {
@@ -55,7 +55,11 @@ describe("Admin", function () {
   });
 
   describe("addAdmin", function () {
-    it("TODO: [R] adding zero address as an admin");
+    it("[R] adding zero address as an admin", async function () {
+      await expect(
+        cAdminContract.addAdmin(ethers.constants.AddressZero)
+      ).to.be.revertedWith("Admin:addAdmin newAdmin is the zero address");
+    });
 
     it("[R]can not add admin from non admin signer", async function () {
       await expect(
@@ -76,7 +80,16 @@ describe("Admin", function () {
   });
 
   describe("removeAdmin", function () {
-    it("TODO: [R] removing zero address");
+    it("[R] removing zero address", async function () {
+      await expect(
+        cAdminContract.addAdmin(ethers.constants.AddressZero)
+      ).to.be.revertedWith("Admin:addAdmin newAdmin is the zero address");
+      await expect(
+        cAdminContract.removeAdmin(ethers.constants.AddressZero)
+      ).to.be.revertedWith(
+        "Admin:removeAdmin trying to remove non existing Admin"
+      );
+    });
 
     it("[R]can not remove admin from non admin signer", async function () {
       await expect(
@@ -102,7 +115,14 @@ describe("Admin", function () {
   });
 
   describe("isAdmin", function () {
-    it("TODO: [R] check zero address");
+    it("[R] check zero address", async function () {
+      await expect(
+        cAdminContract.addAdmin(ethers.constants.AddressZero)
+      ).to.be.revertedWith("Admin:addAdmin newAdmin is the zero address");
+      expect(
+        await cAdminContract.isAdmin(ethers.constants.AddressZero)
+      ).to.equal(false);
+    });
 
     it("check admin ", async function () {
       expect(await cAdminContract.isAdmin(ContractOwner.address)).to.equal(
