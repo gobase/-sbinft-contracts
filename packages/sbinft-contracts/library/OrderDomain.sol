@@ -96,6 +96,89 @@ library OrderDomain {
     return 0;
   }
 
+  /**
+   * @dev Stateless Check validity of arguments when called exchange
+   *
+   * @param _saleOrder OrderDomain.SaleOrder
+   * @param _buyOrder OrderDomain.BuyOrder
+   */
+  function _checkParameterForExchange(
+    OrderDomain.SaleOrder calldata _saleOrder,
+    OrderDomain.BuyOrder calldata _buyOrder
+  ) internal view {
+    // OrderDomain.SaleOrder
+    // EM: SaleOrder invalid assetList
+    require(_saleOrder.assetList.length > 0, "E:CPFE:SIAL");
+    // EM: SaleOrder invalid currentOwner
+    require(_saleOrder.currentOwner != address(0), "E:CPFE:SICO");
+    // EM: SaleOrder invalid paymentReceiver
+    require(_saleOrder.paymentReceiver != address(0), "E:CPFE:SIPR");
+
+    // EM: SaleOrder invalid start
+    require(
+      _saleOrder.start > 0 && _saleOrder.start <= block.timestamp,
+      "E:CPFE:SIS"
+    );
+    // EM: SaleOrder invalid end
+    require(
+      _saleOrder.end == 0 || _saleOrder.end > block.timestamp,
+      "E:CPFE:SIE"
+    );
+    // EM: SaleOrder invalid nounce
+    require(_saleOrder.nounce != 0, "E:CPFE:SIN");
+
+    // OrderDomain.Asset
+    uint256 idx = 0;
+    for (idx = 0; idx < _saleOrder.assetList.length; idx++) {
+      // EM: SaleOrder asset invalid originKind
+      require(_saleOrder.assetList[idx].originKind != bytes4(0), "E:CPFE:SAIO");
+      // EM: SaleOrder asset invalid token
+      require(_saleOrder.assetList[idx].token != address(0), "E:CPFE:SAIT");
+      // EM: SaleOrder asset invalid tokenId
+      require(_saleOrder.assetList[idx].tokenId != 0, "E:CPFE:SAITI");
+    }
+
+    // OrderDomain.BuyOrder
+    // EM: BuyOrder invalid saleNounce
+    require(_buyOrder.saleNounce != 0, "E:CPFE:BIS");
+    // EM: SaleOrder and BuyOrder nounce does't match
+    require(_saleOrder.nounce == _buyOrder.saleNounce, "E:CPFE:SBN");
+    // EM: BuyOrder invalid buyer
+    require(_buyOrder.buyer != address(0), "E:CPFE:BIB");
+    // EM: BuyOrder invalid payer
+    require(_buyOrder.payer != address(0), "E:CPFE:BIP");
+    // EM: BuyOrder invalid paymentMode
+    require(_buyOrder.paymentDetails.paymentMode != bytes4(0), "E:CPFE:BIPM");
+    // EM: BuyOrder invalid price
+    require(_buyOrder.paymentDetails.price != 0, "E:CPFE:BOIP");
+
+    // Mixed cases
+    // EM: currentOwner and buyer can't be same
+    require(_saleOrder.currentOwner != _buyOrder.buyer, "E:CPFE:BIB");
+
+    // Check for matching payment mode for Sale and Buy
+    bool matchFound = false;
+    for (idx = 0; idx < _saleOrder.acceptedPaymentMode.length; idx++) {
+      // EM: SaleOrder acceptedPaymentMode invalid paymentMode
+      require(
+        _saleOrder.acceptedPaymentMode[idx].paymentMode != bytes4(0),
+        "E:CPFE:SAPMPM"
+      );
+      // EM: SaleOrder acceptedPaymentMode invalid price
+      require(_saleOrder.acceptedPaymentMode[idx].price != 0, "E:CPFE:SAPMP");
+
+      if (
+        _saleOrder.acceptedPaymentMode[idx].paymentMode ==
+        _buyOrder.paymentDetails.paymentMode
+      ) {
+        matchFound = true;
+        break;
+      }
+    }
+    // EM: payment mode did't match
+    require(matchFound, "E:CPFE:PMNM");
+  }
+
   // ---- EIP712 ----
   bytes32 constant ASSET_TYPEHASH =
     keccak256(
