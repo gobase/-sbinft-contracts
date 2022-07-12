@@ -21,7 +21,7 @@
     "compile": "hardhat compile",
     "prepare": "yarn run clean && env COMPILE_MODE=production yarn run compile",
     "prepublish": "sh scripts/move.sh",
-    "publish": "np --any-branch --no-2fa --no-tests",
+    "publish": "cd packages/sbinft-contracts && np --any-branch --no-2fa --no-tests && cd ../..",
     "postpublish": "echo \"postpublish未実装\"",
     "deploy": "echo \"deploy未実装\" && exit 1"
   },
