@@ -29,14 +29,16 @@ describe("Admin", function () {
 
   describe("batchAddAdmin", function () {
     it("check adding zero address as admin", async function () {
-      await cAdminContract.batchAddAdmin([
-        ethers.constants.AddressZero,
-        Address1.address,
-      ]);
-      expect(await cAdminContract.isAdmin(Address1.address)).to.equal(true);
+      await expect(
+        cAdminContract.batchAddAdmin([
+          ethers.constants.AddressZero,
+          Address1.address,
+        ])
+      ).to.be.revertedWith("Admin:addAdmin newAdmin is the zero address");
+      expect(await cAdminContract.isAdmin(Address1.address)).to.equal(false);
       expect(
         await cAdminContract.isAdmin(ethers.constants.AddressZero)
-      ).to.equal(true);
+      ).to.equal(false);
     });
 
     it("can add admin", async function () {
