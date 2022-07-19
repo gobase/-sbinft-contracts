@@ -51,6 +51,36 @@ library OrderDomain {
   }
 
   /**
+   * @dev Checks if it's a valid origin kind
+   *
+   * @param _originKind bytes4
+   */
+  function _isValidOriginKind(bytes4 _originKind)
+    internal
+    pure
+    returns (bool)
+  {
+    return (_originKind == NANAKUSA_ORIGIN_KIND ||
+      _originKind == PARTNER_ORIGIN_KIND);
+  }
+
+  /**
+   * @dev Checks if it's a valid payment mode
+   *
+   * @param _paymentMode bytes4
+   */
+  function _isValidPaymentMode(bytes4 _paymentMode)
+    internal
+    pure
+    returns (bool)
+  {
+    return (_paymentMode == ETH_PAYMENT_MODE ||
+      _paymentMode == ERC20_PAYMENT_MODE || 
+      _paymentMode == CREDIT_CARD_PAYMENT_MODE || 
+      _paymentMode == OTHER_BLOCKCHAIN_PAYMENT_MODE);
+  }
+
+  /**
    * @dev Checks if payment mode is onchain
    *
    * @param _paymentMode bytes4
@@ -109,6 +139,16 @@ library OrderDomain {
     // OrderDomain.SaleOrder
     // EM: SaleOrder invalid assetList
     require(_saleOrder.assetList.length > 0, "E:CPFE:SIAL");
+    // OrderDomain.Asset
+    uint256 idx = 0;
+    for (idx = 0; idx < _saleOrder.assetList.length; idx++) {
+      // EM: SaleOrder asset invalid originKind
+      require(_isValidOriginKind(_saleOrder.assetList[idx].originKind), "E:CPFE:SAIO");
+      // EM: SaleOrder asset invalid token
+      require(_saleOrder.assetList[idx].token != address(0), "E:CPFE:SAIT");
+      // EM: SaleOrder asset invalid tokenId
+      require(_saleOrder.assetList[idx].tokenId != 0, "E:CPFE:SAITI");
+    }
     // EM: SaleOrder invalid currentOwner
     require(_saleOrder.currentOwner != address(0), "E:CPFE:SICO");
     // EM: SaleOrder invalid paymentReceiver
@@ -127,17 +167,6 @@ library OrderDomain {
     // EM: SaleOrder invalid nounce
     require(_saleOrder.nounce != 0, "E:CPFE:SIN");
 
-    // OrderDomain.Asset
-    uint256 idx = 0;
-    for (idx = 0; idx < _saleOrder.assetList.length; idx++) {
-      // EM: SaleOrder asset invalid originKind
-      require(_saleOrder.assetList[idx].originKind != bytes4(0), "E:CPFE:SAIO");
-      // EM: SaleOrder asset invalid token
-      require(_saleOrder.assetList[idx].token != address(0), "E:CPFE:SAIT");
-      // EM: SaleOrder asset invalid tokenId
-      require(_saleOrder.assetList[idx].tokenId != 0, "E:CPFE:SAITI");
-    }
-
     // OrderDomain.BuyOrder
     // EM: BuyOrder invalid saleNounce
     require(_buyOrder.saleNounce != 0, "E:CPFE:BIS");
@@ -148,24 +177,24 @@ library OrderDomain {
     // EM: BuyOrder invalid payer
     require(_buyOrder.payer != address(0), "E:CPFE:BIP");
     // EM: BuyOrder invalid paymentMode
-    require(_buyOrder.paymentDetails.paymentMode != bytes4(0), "E:CPFE:BIPM");
+    require(_isValidPaymentMode(_buyOrder.paymentDetails.paymentMode), "E:CPFE:BIPM");
     // EM: BuyOrder invalid price
     require(_buyOrder.paymentDetails.price != 0, "E:CPFE:BOIP");
 
     // Mixed cases
     // EM: currentOwner and buyer can't be same
-    require(_saleOrder.currentOwner != _buyOrder.buyer, "E:CPFE:BIB");
+    require(_saleOrder.currentOwner != _buyOrder.buyer, "E:CPFE:CAABS");
 
     // Check for matching payment mode for Sale and Buy
     bool matchFound = false;
     for (idx = 0; idx < _saleOrder.acceptedPaymentMode.length; idx++) {
       // EM: SaleOrder acceptedPaymentMode invalid paymentMode
       require(
-        _saleOrder.acceptedPaymentMode[idx].paymentMode != bytes4(0),
+        _isValidPaymentMode(_saleOrder.acceptedPaymentMode[idx].paymentMode),
         "E:CPFE:SAPMPM"
       );
       // EM: SaleOrder acceptedPaymentMode invalid price
-      require(_saleOrder.acceptedPaymentMode[idx].price != 0, "E:CPFE:SAPMP");
+      require(_saleOrder.acceptedPaymentMode[idx].price != 0, "E:CPFE:SAPMIP");
 
       if (
         _saleOrder.acceptedPaymentMode[idx].paymentMode ==
