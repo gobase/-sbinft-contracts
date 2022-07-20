@@ -2,6 +2,7 @@ import { ethers } from "hardhat";
 import { expect } from "chai";
 import { SignerWithAddress } from "@nomiclabs/hardhat-ethers/signers";
 import { AdminMock } from "../typechain";
+import { ContractReceipt } from "ethers";
 
 describe("Admin", function () {
   let ContractOwner: SignerWithAddress,
@@ -47,10 +48,20 @@ describe("Admin", function () {
     });
 
     it("can add admin", async function () {
-      await cAdminContract["addAdmin(address[])"]([
+      const addAdminTx = await cAdminContract["addAdmin(address[])"]([
         Address1.address,
         Address2.address,
       ]);
+      const receipt: ContractReceipt = await addAdminTx.wait();
+      const { events } = receipt;
+
+      expect(events).to.be.an("array").to.have.lengthOf(2);
+      const eventSignature = events?.map((item) => item.eventSignature);
+      expect(eventSignature).to.include.members([
+        "AdminAdded(address)",
+        "AdminAdded(address)",
+      ]);
+
       expect(await cAdminContract.isAdmin(Address2.address)).to.equal(true);
       expect(await cAdminContract.isAdmin(Address1.address)).to.equal(true);
     });
@@ -84,7 +95,17 @@ describe("Admin", function () {
     });
 
     it("can add admin", async function () {
-      await cAdminContract["addAdmin(address)"](Address1.address);
+      const addAdminTx = await cAdminContract["addAdmin(address)"](
+        Address1.address
+      );
+
+      const receipt: ContractReceipt = await addAdminTx.wait();
+      const { events } = receipt;
+
+      expect(events).to.be.an("array").to.have.lengthOf(1);
+      const eventSignature = events?.map((item) => item.eventSignature);
+      expect(eventSignature).to.include.members(["AdminAdded(address)"]);
+
       expect(await cAdminContract.isAdmin(Address1.address)).to.equal(true);
     });
   });
@@ -115,7 +136,15 @@ describe("Admin", function () {
     it("can remove admin", async function () {
       await cAdminContract["addAdmin(address)"](Address1.address);
       expect(await cAdminContract.isAdmin(Address1.address)).to.equal(true);
-      await cAdminContract.removeAdmin(Address1.address);
+      const reemoveAdminTx = await cAdminContract.removeAdmin(Address1.address);
+
+      const receipt: ContractReceipt = await reemoveAdminTx.wait();
+      const { events } = receipt;
+
+      expect(events).to.be.an("array").to.have.lengthOf(1);
+      const eventSignature = events?.map((item) => item.eventSignature);
+      expect(eventSignature).to.include.members(["AdminRemoved(address)"]);
+
       expect(await cAdminContract.isAdmin(Address1.address)).to.equal(false);
     });
   });
