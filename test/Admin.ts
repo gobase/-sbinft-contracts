@@ -13,6 +13,8 @@ describe("Admin", function () {
   const newAdmminZeroError: string =
     "Admin:addAdmin newAdmin is the zero address";
   const callerOnlyAdminError: string = "Admin:onlyAdmin caller is not an Admin";
+  const cremoveNonExistAdminError: string =
+    "Admin:removeAdmin trying to remove non existing Admin";
 
   beforeEach(async function () {
     [ContractOwner, Address1, Address2, Address3] = await ethers.getSigners();
@@ -94,9 +96,7 @@ describe("Admin", function () {
       ).to.be.revertedWith(newAdmminZeroError);
       await expect(
         cAdminContract.removeAdmin(ethers.constants.AddressZero)
-      ).to.be.revertedWith(
-        "Admin:removeAdmin trying to remove non existing Admin"
-      );
+      ).to.be.revertedWith(cremoveNonExistAdminError);
     });
 
     it("[R]can not remove admin from non admin signer", async function () {
@@ -109,9 +109,7 @@ describe("Admin", function () {
       await cAdminContract["addAdmin(address)"](Address1.address);
       await expect(
         cAdminContract.connect(Address1).removeAdmin(Address2.address)
-      ).to.be.revertedWith(
-        "Admin:removeAdmin trying to remove non existing Admin"
-      );
+      ).to.be.revertedWith(cremoveNonExistAdminError);
     });
 
     it("can remove admin", async function () {
