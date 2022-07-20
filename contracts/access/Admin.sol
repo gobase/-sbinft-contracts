@@ -22,7 +22,7 @@ abstract contract Admin is Context {
   /**
    * @dev 管理者を複数追加
    */
-  function batchAddAdmin(address[] calldata newAdmin) public virtual onlyAdmin {
+  function addAdmin(address[] calldata newAdmin) public virtual onlyAdmin {
     for (uint256 idx = 0; idx < newAdmin.length; idx++) {
       _addAdmin(newAdmin[idx]);
     }
