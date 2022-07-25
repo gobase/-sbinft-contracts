@@ -2,7 +2,7 @@
 import { ethers } from "hardhat";
 import { expect } from "chai";
 import { SignerWithAddress } from "@nomiclabs/hardhat-ethers/signers";
-import { AdminMock } from "../typechain";
+import { AdminMock } from "../../typechain";
 import { ContractReceipt } from "ethers";
 
 describe("Admin", function () {
