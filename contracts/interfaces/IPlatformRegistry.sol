@@ -127,5 +127,5 @@ interface IPlatformRegistry is IERC165Upgradeable {
    */
   function getExternalPlatformFeeReceiver(address _token)
     external
-    returns (address);
+    returns (address payable);
 }
