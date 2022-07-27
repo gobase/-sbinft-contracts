@@ -93,5 +93,39 @@ interface IPlatformRegistry is IERC165Upgradeable {
    *
    * @param _token address of partner token
    */
-  function getPartnerFeeReceiver(address _token) external returns (address payable);
+  function getPartnerFeeReceiver(address _token)
+    external
+    returns (address payable);
+
+  /**
+   * @dev Returns PlatformFeeReceiver
+   *
+   */
+  function getPlatformFeeRateLowerLimit() external returns (uint16);
+
+  /**
+   * @dev Update to new PartnerPfFeeReceiver for partner's platformSigner
+   *
+   * @param _externalPlatformToken address of external Platform Token
+   * @param _partnerPfFeeReceiver address new partner's platformer FeeReceiver
+   *
+   * Requirements:
+   * - _platformSigner must be a non zero address
+   * - _partnerPfFeeReceiver must be a non zero address
+   *
+   * Emits a {ExternalPfFeeReceiverUpdated} event
+   */
+  function updateExternalPlatformFeeReceiver(
+    address _externalPlatformToken,
+    address payable _partnerPfFeeReceiver
+  ) external;
+
+  /**
+   * @dev Returns ExternalPlatformFeeReceiver
+   *
+   * @param _token address of external platform token
+   */
+  function getExternalPlatformFeeReceiver(address _token)
+    external
+    returns (address payable);
 }

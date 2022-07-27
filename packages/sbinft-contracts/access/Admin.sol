@@ -22,7 +22,7 @@ abstract contract Admin is Context {
   /**
    * @dev 管理者を複数追加
    */
-  function batchAddAdmin(address[] calldata newAdmin) public virtual onlyAdmin {
+  function addAdmin(address[] calldata newAdmin) public virtual onlyAdmin {
     for (uint256 idx = 0; idx < newAdmin.length; idx++) {
       _addAdmin(newAdmin[idx]);
     }
@@ -32,11 +32,6 @@ abstract contract Admin is Context {
    * @dev 管理者を一人追加
    */
   function addAdmin(address newAdmin) public virtual onlyAdmin {
-    require(
-      newAdmin != address(0),
-      "Admin:addAdmin newAdmin is the zero address"
-    );
-
     _addAdmin(newAdmin);
   }
 
@@ -45,6 +40,11 @@ abstract contract Admin is Context {
    * 無制限 Internal function
    */
   function _addAdmin(address newAdmin) internal virtual {
+    require(
+      newAdmin != address(0),
+      "Admin:addAdmin newAdmin is the zero address"
+    );
+
     _admin[newAdmin] = true;
     emit AdminAdded(newAdmin);
   }
