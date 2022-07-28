@@ -4,6 +4,8 @@ pragma solidity ^0.8.9;
 
 import "@openzeppelin/contracts-upgradeable/interfaces/IERC165Upgradeable.sol";
 
+import "../library/AuctionDomain.sol";
+
 /**
  * @title SBINFT Platform Registry
  */
@@ -128,4 +130,14 @@ interface IPlatformRegistry is IERC165Upgradeable {
   function getExternalPlatformFeeReceiver(address _token)
     external
     returns (address payable);
+
+  /**
+   * @dev Check validity of arguments when called CreateAuction
+   *
+   * @param _auction auction info
+   *
+   */
+  function checkParametaForAuctionCreate(
+    AuctionDomain.Auction calldata _auction
+  ) external;
 }
