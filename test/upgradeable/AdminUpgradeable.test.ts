@@ -55,17 +55,32 @@ describe("AdminUpgradeable", function () {
     });
   });
 
-  describe("batchAddAdmin", function () {
+  describe("addAdmin multiple", function () {
     it("[R]can not add admin from non admin signer", async function () {
       await expect(
         cAdminUpgradeableMock
           .connect(address1)
-          .batchAddAdmin([address1.address, address2.address])
+          ["addAdmin(address[])"]([address2.address, address3.address])
       ).to.be.revertedWith(callerOnlyAdminError);
     });
 
+    it("check adding zero address as admin", async function () {
+      await expect(
+        cAdminUpgradeableMock["addAdmin(address[])"]([
+          ethers.constants.AddressZero,
+          address1.address,
+        ])
+      ).to.be.revertedWith(newAdmminZeroError);
+      expect(await cAdminUpgradeableMock.isAdmin(address1.address)).to.equal(
+        false
+      );
+      expect(
+        await cAdminUpgradeableMock.isAdmin(ethers.constants.AddressZero)
+      ).to.equal(false);
+    });
+
     it("can add admin", async function () {
-      const addAdminTx = await cAdminUpgradeableMock.batchAddAdmin([
+      const addAdminTx = await cAdminUpgradeableMock["addAdmin(address[])"]([
         address1.address,
         address2.address,
       ]);
@@ -89,17 +104,31 @@ describe("AdminUpgradeable", function () {
   });
 
   describe("addAdmin", function () {
-    it("check adding zero address as admin", async function () {
+    it("[R] adding zero address as an admin", async function () {
       await expect(
-        cAdminUpgradeableMock.addAdmin(ethers.constants.AddressZero)
+        cAdminUpgradeableMock["addAdmin(address)"](ethers.constants.AddressZero)
       ).to.be.revertedWith(newAdmminZeroError);
-      expect(
-        await cAdminUpgradeableMock.isAdmin(ethers.constants.AddressZero)
-      ).to.equal(false);
+    });
+
+    it("[R]can not add admin from non admin signer", async function () {
+      await expect(
+        cAdminUpgradeableMock
+          .connect(address1)
+          ["addAdmin(address)"](address2.address)
+      ).to.be.revertedWith(callerOnlyAdminError);
+    });
+
+    it("[R]can not add admin zero address", async function () {
+      await expect(
+        cAdminUpgradeableMock["addAdmin(address)"](ethers.constants.AddressZero)
+      ).to.be.revertedWith(newAdmminZeroError);
     });
 
     it("can add admin", async function () {
-      const addAdminTx = await cAdminUpgradeableMock.addAdmin(address1.address);
+      const addAdminTx = await cAdminUpgradeableMock["addAdmin(address)"](
+        address1.address
+      );
+
       const receipt: ContractReceipt = await addAdminTx.wait();
       const { events } = receipt;
 
@@ -111,18 +140,12 @@ describe("AdminUpgradeable", function () {
         true
       );
     });
-
-    it("[R]can not add admin from non admin signer", async function () {
-      await expect(
-        cAdminUpgradeableMock.connect(address1).addAdmin(address1.address)
-      ).to.be.revertedWith(callerOnlyAdminError);
-    });
   });
 
   describe("removeAdmin", function () {
     it("[R] removing zero address", async function () {
       await expect(
-        cAdminUpgradeableMock.addAdmin(ethers.constants.AddressZero)
+        cAdminUpgradeableMock["addAdmin(address)"](ethers.constants.AddressZero)
       ).to.be.revertedWith(newAdmminZeroError);
       await expect(
         cAdminUpgradeableMock.removeAdmin(ethers.constants.AddressZero)
@@ -136,7 +159,7 @@ describe("AdminUpgradeable", function () {
     });
 
     it("[R]can not remove admin non admin signer", async function () {
-      await cAdminUpgradeableMock.addAdmin(address1.address);
+      cAdminUpgradeableMock["addAdmin(address)"](address1.address);
       await expect(
         cAdminUpgradeableMock.connect(address1).removeAdmin(address2.address)
       ).to.be.revertedWith(cremoveNonExistAdminError);
@@ -146,7 +169,7 @@ describe("AdminUpgradeable", function () {
     });
 
     it("can remove admin", async function () {
-      await cAdminUpgradeableMock.addAdmin(address1.address);
+      cAdminUpgradeableMock["addAdmin(address)"](address1.address);
       expect(await cAdminUpgradeableMock.isAdmin(address1.address)).to.equal(
         true
       );
@@ -170,7 +193,7 @@ describe("AdminUpgradeable", function () {
   describe("isAdmin", function () {
     it("[R] check zero address", async function () {
       await expect(
-        cAdminUpgradeableMock.addAdmin(ethers.constants.AddressZero)
+        cAdminUpgradeableMock["addAdmin(address)"](ethers.constants.AddressZero)
       ).to.be.revertedWith(newAdmminZeroError);
 
       expect(
