@@ -22,30 +22,36 @@ describe("Admin", function () {
     [deployer, nonAdmin, address1, address2, address3] =
       await ethers.getSigners();
 
-    const cfAdminUpgradeableContract = await ethers.getContractFactory('AdminUpgradeableMock')
+    const cfAdminUpgradeableContract = await ethers.getContractFactory(
+      "AdminUpgradeableMock"
+    );
     cAdminUpgradeableMock = await hre.upgrades.deployProxy(
-        cfAdminUpgradeableContract,
-        [],
-        {
-            kind: "uups",
-            initializer: "__AdminUpgradeableMock_init",
-        }
-    )
+      cfAdminUpgradeableContract,
+      [],
+      {
+        kind: "uups",
+        initializer: "__AdminUpgradeableMock_init",
+      }
+    );
     await cAdminUpgradeableMock.deployed();
   });
 
   describe("Post deployment checks", function () {
-    it("[R] could not initialize", async function(){
-        await expect(
-            cAdminUpgradeableMock.__AdminUpgradeableMock_init()
-        ).to.be.revertedWith("Initializable: contract is already initialized")
-    })
+    it("[R] could not initialize", async function () {
+      await expect(
+        cAdminUpgradeableMock.__AdminUpgradeableMock_init()
+      ).to.be.revertedWith("Initializable: contract is already initialized");
+    });
     it("even deployer is not an admin", async function () {
-      expect(await cAdminUpgradeableMock.isAdmin(deployer.address)).to.equal(true);
+      expect(await cAdminUpgradeableMock.isAdmin(deployer.address)).to.equal(
+        true
+      );
     });
 
     it("non deployer is not admin", async function () {
-      expect(await cAdminUpgradeableMock.isAdmin(nonAdmin.address)).to.equal(false);
+      expect(await cAdminUpgradeableMock.isAdmin(nonAdmin.address)).to.equal(
+        false
+      );
     });
   });
 
@@ -54,9 +60,9 @@ describe("Admin", function () {
       await expect(
         cAdminUpgradeableMock.addAdmin(ethers.constants.AddressZero)
       ).to.be.revertedWith(newAdmminZeroError);
-      expect(await cAdminUpgradeableMock.isAdmin(ethers.constants.AddressZero)).to.equal(
-        false
-      );
+      expect(
+        await cAdminUpgradeableMock.isAdmin(ethers.constants.AddressZero)
+      ).to.equal(false);
     });
 
     it("can add admin", async function () {
@@ -66,18 +72,16 @@ describe("Admin", function () {
 
       expect(events).to.be.an("array").to.have.lengthOf(1);
       const eventSignature = events?.map((item) => item.eventSignature);
-      expect(eventSignature).to.include.members([
-        "AdminAdded(address)",
-      ]);
+      expect(eventSignature).to.include.members(["AdminAdded(address)"]);
 
-      expect(await cAdminUpgradeableMock.isAdmin(address1.address)).to.equal(true);
+      expect(await cAdminUpgradeableMock.isAdmin(address1.address)).to.equal(
+        true
+      );
     });
 
     it("[R]can not add admin from non admin signer", async function () {
       await expect(
-        cAdminUpgradeableMock
-          .connect(address1)
-          .addAdmin(address1.address)
+        cAdminUpgradeableMock.connect(address1).addAdmin(address1.address)
       ).to.be.revertedWith(callerOnlyAdminError);
     });
   });
@@ -99,17 +103,23 @@ describe("Admin", function () {
     });
 
     it("[R]can not remove admin non admin signer", async function () {
-      await cAdminUpgradeableMock.addAdmin(address1.address)
+      await cAdminUpgradeableMock.addAdmin(address1.address);
       await expect(
         cAdminUpgradeableMock.connect(address1).removeAdmin(address2.address)
       ).to.be.revertedWith(cremoveNonExistAdminError);
-      expect(await cAdminUpgradeableMock.isAdmin(address1.address)).to.equal(true);
+      expect(await cAdminUpgradeableMock.isAdmin(address1.address)).to.equal(
+        true
+      );
     });
 
     it("can remove admin", async function () {
       await cAdminUpgradeableMock.addAdmin(address1.address);
-      expect(await cAdminUpgradeableMock.isAdmin(address1.address)).to.equal(true);
-      const reemoveAdminTx = await cAdminUpgradeableMock.removeAdmin(address1.address);
+      expect(await cAdminUpgradeableMock.isAdmin(address1.address)).to.equal(
+        true
+      );
+      const reemoveAdminTx = await cAdminUpgradeableMock.removeAdmin(
+        address1.address
+      );
 
       const receipt: ContractReceipt = await reemoveAdminTx.wait();
       const { events } = receipt;
@@ -118,7 +128,9 @@ describe("Admin", function () {
       const eventSignature = events?.map((item) => item.eventSignature);
       expect(eventSignature).to.include.members(["AdminRemoved(address)"]);
 
-      expect(await cAdminUpgradeableMock.isAdmin(address1.address)).to.equal(false);
+      expect(await cAdminUpgradeableMock.isAdmin(address1.address)).to.equal(
+        false
+      );
     });
   });
 
@@ -128,14 +140,18 @@ describe("Admin", function () {
         cAdminUpgradeableMock.addAdmin(ethers.constants.AddressZero)
       ).to.be.revertedWith(newAdmminZeroError);
 
-      expect(await cAdminUpgradeableMock.isAdmin(ethers.constants.AddressZero)).to.equal(
-        false
-      );
+      expect(
+        await cAdminUpgradeableMock.isAdmin(ethers.constants.AddressZero)
+      ).to.equal(false);
     });
 
     it("check admin ", async function () {
-      expect(await cAdminUpgradeableMock.isAdmin(deployer.address)).to.equal(true);
-      expect(await cAdminUpgradeableMock.isAdmin(address1.address)).to.equal(false);
+      expect(await cAdminUpgradeableMock.isAdmin(deployer.address)).to.equal(
+        true
+      );
+      expect(await cAdminUpgradeableMock.isAdmin(address1.address)).to.equal(
+        false
+      );
     });
   });
 });
