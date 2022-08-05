@@ -37,7 +37,7 @@ describe("AdminUpgradeable", function () {
   });
 
   describe("Post deployment checks", function () {
-    it("[R] could not initialize", async function () {
+    it("[R] could not re-initialize", async function () {
       await expect(
         cAdminUpgradeableMock.__AdminUpgradeableMock_init()
       ).to.be.revertedWith("Initializable: contract is already initialized");
@@ -48,7 +48,7 @@ describe("AdminUpgradeable", function () {
       );
     });
 
-    it("non deployer is not admin", async function () {
+    it("non-deployer is not admin", async function () {
       expect(await cAdminUpgradeableMock.isAdmin(nonAdmin.address)).to.equal(
         false
       );
