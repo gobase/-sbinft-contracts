@@ -5,7 +5,7 @@ import { expect } from "chai";
 import { SignerWithAddress } from "@nomiclabs/hardhat-ethers/signers";
 import { Contract, ContractReceipt } from "ethers";
 
-describe("Admin", function () {
+describe("AdminUpgradeable", function () {
   let deployer: SignerWithAddress;
   let nonAdmin: SignerWithAddress;
   let address1: SignerWithAddress;
@@ -42,7 +42,7 @@ describe("Admin", function () {
         cAdminUpgradeableMock.__AdminUpgradeableMock_init()
       ).to.be.revertedWith("Initializable: contract is already initialized");
     });
-    it("even deployer is not an admin", async function () {
+    it("deployer is an admin", async function () {
       expect(await cAdminUpgradeableMock.isAdmin(deployer.address)).to.equal(
         true
       );
@@ -51,6 +51,31 @@ describe("Admin", function () {
     it("non deployer is not admin", async function () {
       expect(await cAdminUpgradeableMock.isAdmin(nonAdmin.address)).to.equal(
         false
+      );
+    });
+  });
+
+  describe("batchAddAdmin", function () {
+    it("can add admin", async function () {
+      const addAdminTx = await cAdminUpgradeableMock.batchAddAdmin([
+        address1.address,
+        address2.address,
+      ]);
+      const receipt: ContractReceipt = await addAdminTx.wait();
+      const { events } = receipt;
+
+      expect(events).to.be.an("array").to.have.lengthOf(2);
+      const eventSignature = events?.map((item) => item.eventSignature);
+      expect(eventSignature).to.include.members([
+        "AdminAdded(address)",
+        "AdminAdded(address)",
+      ]);
+
+      expect(await cAdminUpgradeableMock.isAdmin(address2.address)).to.equal(
+        true
+      );
+      expect(await cAdminUpgradeableMock.isAdmin(address1.address)).to.equal(
+        true
       );
     });
   });
