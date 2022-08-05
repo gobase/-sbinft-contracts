@@ -56,6 +56,14 @@ describe("AdminUpgradeable", function () {
   });
 
   describe("batchAddAdmin", function () {
+    it("[R]can not add admin from non admin signer", async function () {
+      await expect(
+        cAdminUpgradeableMock
+          .connect(address1)
+          .batchAddAdmin([address1.address, address2.address])
+      ).to.be.revertedWith(callerOnlyAdminError);
+    });
+
     it("can add admin", async function () {
       const addAdminTx = await cAdminUpgradeableMock.batchAddAdmin([
         address1.address,
