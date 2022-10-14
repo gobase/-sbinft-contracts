@@ -6,4 +6,5 @@ ls -d */ | xargs rm -rf
 cd ../..
 
 # Copy files from development to packages/sbinft-contracts
-cp -R contracts/* packages/sbinft-contracts
+rsync -av --progress contracts/* packages/sbinft-contracts --exclude mocks/* --exclude upgradeable/mocks/*
+rsync -av --progress abi/* packages/sbinft-contracts/abi
