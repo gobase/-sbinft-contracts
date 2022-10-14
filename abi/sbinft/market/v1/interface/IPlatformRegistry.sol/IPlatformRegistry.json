@@ -1,0 +1,384 @@
+{
+  "_format": "hh-sol-artifact-1",
+  "contractName": "IPlatformRegistry",
+  "sourceName": "contracts/sbinft/market/v1/interface/IPlatformRegistry.sol",
+  "abi": [
+    {
+      "inputs": [
+        {
+          "internalType": "address[]",
+          "name": "_platformSignerList",
+          "type": "address[]"
+        }
+      ],
+      "name": "addPlatformSigner",
+      "outputs": [],
+      "stateMutability": "nonpayable",
+      "type": "function"
+    },
+    {
+      "inputs": [
+        {
+          "internalType": "address[]",
+          "name": "_addTokenList",
+          "type": "address[]"
+        }
+      ],
+      "name": "addToERC20Whitelist",
+      "outputs": [],
+      "stateMutability": "nonpayable",
+      "type": "function"
+    },
+    {
+      "inputs": [
+        {
+          "components": [
+            {
+              "internalType": "uint256",
+              "name": "auctionId",
+              "type": "uint256"
+            },
+            {
+              "internalType": "bytes4",
+              "name": "pfKind",
+              "type": "bytes4"
+            },
+            {
+              "internalType": "address payable",
+              "name": "creatorAddress",
+              "type": "address"
+            },
+            {
+              "components": [
+                {
+                  "internalType": "bytes4",
+                  "name": "originKind",
+                  "type": "bytes4"
+                },
+                {
+                  "internalType": "address",
+                  "name": "asset",
+                  "type": "address"
+                },
+                {
+                  "internalType": "uint256",
+                  "name": "assetId",
+                  "type": "uint256"
+                },
+                {
+                  "internalType": "uint16",
+                  "name": "partnerFeeRate",
+                  "type": "uint16"
+                },
+                {
+                  "internalType": "uint8",
+                  "name": "isSecondarySale",
+                  "type": "uint8"
+                }
+              ],
+              "internalType": "struct AuctionDomain.Asset",
+              "name": "asset",
+              "type": "tuple"
+            },
+            {
+              "components": [
+                {
+                  "internalType": "bytes4",
+                  "name": "auctionKind",
+                  "type": "bytes4"
+                },
+                {
+                  "internalType": "bytes4",
+                  "name": "bidMode",
+                  "type": "bytes4"
+                },
+                {
+                  "internalType": "address",
+                  "name": "paymentToken",
+                  "type": "address"
+                }
+              ],
+              "internalType": "struct AuctionDomain.AuctionType",
+              "name": "auctionType",
+              "type": "tuple"
+            },
+            {
+              "internalType": "uint256",
+              "name": "startPrice",
+              "type": "uint256"
+            },
+            {
+              "internalType": "uint256",
+              "name": "startTime",
+              "type": "uint256"
+            },
+            {
+              "internalType": "uint256",
+              "name": "endTime",
+              "type": "uint256"
+            },
+            {
+              "internalType": "uint16",
+              "name": "pfFeeRate",
+              "type": "uint16"
+            },
+            {
+              "internalType": "uint16",
+              "name": "externalPfFeeRate",
+              "type": "uint16"
+            },
+            {
+              "internalType": "address",
+              "name": "platformSigner",
+              "type": "address"
+            }
+          ],
+          "internalType": "struct AuctionDomain.Auction",
+          "name": "_auction",
+          "type": "tuple"
+        }
+      ],
+      "name": "checkParametaForAuctionCreate",
+      "outputs": [],
+      "stateMutability": "nonpayable",
+      "type": "function"
+    },
+    {
+      "inputs": [
+        {
+          "internalType": "address",
+          "name": "_token",
+          "type": "address"
+        }
+      ],
+      "name": "getExternalPlatformFeeReceiver",
+      "outputs": [
+        {
+          "internalType": "address payable",
+          "name": "",
+          "type": "address"
+        }
+      ],
+      "stateMutability": "nonpayable",
+      "type": "function"
+    },
+    {
+      "inputs": [
+        {
+          "internalType": "address",
+          "name": "_token",
+          "type": "address"
+        }
+      ],
+      "name": "getPartnerFeeReceiver",
+      "outputs": [
+        {
+          "internalType": "address payable",
+          "name": "",
+          "type": "address"
+        }
+      ],
+      "stateMutability": "nonpayable",
+      "type": "function"
+    },
+    {
+      "inputs": [],
+      "name": "getPlatformFeeRateLowerLimit",
+      "outputs": [
+        {
+          "internalType": "uint16",
+          "name": "",
+          "type": "uint16"
+        }
+      ],
+      "stateMutability": "nonpayable",
+      "type": "function"
+    },
+    {
+      "inputs": [],
+      "name": "getPlatformFeeReceiver",
+      "outputs": [
+        {
+          "internalType": "address payable",
+          "name": "",
+          "type": "address"
+        }
+      ],
+      "stateMutability": "nonpayable",
+      "type": "function"
+    },
+    {
+      "inputs": [
+        {
+          "internalType": "address",
+          "name": "_collection",
+          "type": "address"
+        },
+        {
+          "internalType": "address",
+          "name": "_partnerFeeReceiver",
+          "type": "address"
+        }
+      ],
+      "name": "isPartnerFeeReceiver",
+      "outputs": [
+        {
+          "internalType": "bool",
+          "name": "",
+          "type": "bool"
+        }
+      ],
+      "stateMutability": "view",
+      "type": "function"
+    },
+    {
+      "inputs": [
+        {
+          "internalType": "address",
+          "name": "_signer",
+          "type": "address"
+        }
+      ],
+      "name": "isPlatformSigner",
+      "outputs": [
+        {
+          "internalType": "bool",
+          "name": "",
+          "type": "bool"
+        }
+      ],
+      "stateMutability": "view",
+      "type": "function"
+    },
+    {
+      "inputs": [
+        {
+          "internalType": "address",
+          "name": "_token",
+          "type": "address"
+        }
+      ],
+      "name": "isWhitelistedERC20",
+      "outputs": [
+        {
+          "internalType": "bool",
+          "name": "",
+          "type": "bool"
+        }
+      ],
+      "stateMutability": "view",
+      "type": "function"
+    },
+    {
+      "inputs": [
+        {
+          "internalType": "address[]",
+          "name": "_tokenList",
+          "type": "address[]"
+        }
+      ],
+      "name": "removeFromERC20Whitelist",
+      "outputs": [],
+      "stateMutability": "nonpayable",
+      "type": "function"
+    },
+    {
+      "inputs": [
+        {
+          "internalType": "address[]",
+          "name": "_list",
+          "type": "address[]"
+        }
+      ],
+      "name": "removePlatformSigner",
+      "outputs": [],
+      "stateMutability": "nonpayable",
+      "type": "function"
+    },
+    {
+      "inputs": [
+        {
+          "internalType": "bytes4",
+          "name": "interfaceId",
+          "type": "bytes4"
+        }
+      ],
+      "name": "supportsInterface",
+      "outputs": [
+        {
+          "internalType": "bool",
+          "name": "",
+          "type": "bool"
+        }
+      ],
+      "stateMutability": "view",
+      "type": "function"
+    },
+    {
+      "inputs": [
+        {
+          "internalType": "address",
+          "name": "_externalPlatformToken",
+          "type": "address"
+        },
+        {
+          "internalType": "address payable",
+          "name": "_partnerPfFeeReceiver",
+          "type": "address"
+        }
+      ],
+      "name": "updateExternalPlatformFeeReceiver",
+      "outputs": [],
+      "stateMutability": "nonpayable",
+      "type": "function"
+    },
+    {
+      "inputs": [
+        {
+          "internalType": "address",
+          "name": "_collection",
+          "type": "address"
+        },
+        {
+          "internalType": "address payable",
+          "name": "_partnerFeeReceiver",
+          "type": "address"
+        }
+      ],
+      "name": "updatePartnerFeeReceiver",
+      "outputs": [],
+      "stateMutability": "nonpayable",
+      "type": "function"
+    },
+    {
+      "inputs": [
+        {
+          "internalType": "uint16",
+          "name": "_new",
+          "type": "uint16"
+        }
+      ],
+      "name": "updatePlatformFeeLowerLimit",
+      "outputs": [],
+      "stateMutability": "nonpayable",
+      "type": "function"
+    },
+    {
+      "inputs": [
+        {
+          "internalType": "address payable",
+          "name": "_new",
+          "type": "address"
+        }
+      ],
+      "name": "updatePlatformFeeReceiver",
+      "outputs": [],
+      "stateMutability": "nonpayable",
+      "type": "function"
+    }
+  ],
+  "bytecode": "0x",
+  "deployedBytecode": "0x",
+  "linkReferences": {},
+  "deployedLinkReferences": {}
+}
