@@ -79,6 +79,11 @@
           "internalType": "uint256[]",
           "name": "royaltyFees",
           "type": "uint256[]"
+        },
+        {
+          "internalType": "uint8",
+          "name": "royaltyType",
+          "type": "uint8"
         }
       ],
       "stateMutability": "nonpayable",
