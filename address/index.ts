@@ -1,4 +1,4 @@
-export const MARKET_V1 = {
+const MARKET_V1 = {
   Proxy: {
     Exchange: "0x0dBC6278762d6ec43937ebddc38E94cA246681aF",
     RoyaltyRegistry: "0xBCeA2000eb07fe4c70d0796d8F2160eA9e48Fc4a",
@@ -11,4 +11,8 @@ export const MARKET_V1 = {
     TransferProxy: "0xEcCAd43e72c7A7d10C4926Dfb4C17d491E4FE08E",
     PlatformRegistry: "0x2E0ba6d132891589A85bC9321c3046c1aDbF9cDA",
   },
+};
+
+module.exports = {
+  MARKET_V1,
 };
