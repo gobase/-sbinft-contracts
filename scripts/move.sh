@@ -8,4 +8,4 @@ cd ../..
 # Copy files from development to packages/sbinft-contracts
 rsync -avh --progress contracts/* packages/sbinft-contracts --exclude mocks/* --exclude upgradeable/mocks/*
 rsync -avh --progress abi packages/sbinft-contracts
-rsync -avh --progress address packages/sbinft-contracts
+rsync -avh --progress constant packages/sbinft-contracts
