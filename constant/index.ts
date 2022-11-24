@@ -2,16 +2,18 @@ const MARKET_V1 = {
   address: {
     goerli: {
       Proxy: {
-        Exchange: "0x0dBC6278762d6ec43937ebddc38E94cA246681aF",
-        RoyaltyRegistry: "0xBCeA2000eb07fe4c70d0796d8F2160eA9e48Fc4a",
-        TransferProxy: "0x7938037Ee9D0F8D8DdD379EfFdDaA117fCa9A668",
-        PlatformRegistry: "0xFc2c13bd95f5d63F80555cF862873f01e0378cB6",
+        Exchange: "0x0624Ce7A8B4aFf06592773f8b9950566E6c22E6F",
+        RoyaltyRegistry: "0x90f608f8b3DC917b8Def6427DE9BdD1502402454",
+        TransferProxy: "0x36d67d4281385fB1AEdC8179c9564796d4B193e0",
+        PlatformRegistry: "0x122a2782Be0e322039a93E8E031a8B6884e96089",
+        SBINFTForwarder: "0xe24a92fF1069CF8CC2c1948beb39D848388E59DF",
       },
       Implementation: {
-        Exchange: "0x6740D6bd48c3137399bDA1651340Fa6C9Ded9709",
-        RoyaltyRegistry: "0x89c315A78ACCE39804Db4A58909D02ee57501462",
-        TransferProxy: "0xEcCAd43e72c7A7d10C4926Dfb4C17d491E4FE08E",
-        PlatformRegistry: "0x2E0ba6d132891589A85bC9321c3046c1aDbF9cDA",
+        Exchange: "0x91990b942631DE7d84A5C47a8B81B8a90D339939",
+        RoyaltyRegistry: "0x785E90c4f416182aE3762B3E0244aEb65Ee68160",
+        TransferProxy: "0x9b3B816751D98c2bB134CBb3d0C44d9354a7F704",
+        PlatformRegistry: "0xE794F314437a432DDb9E53f8a4E44e04D67C3f36",
+        SBINFTForwarder: "0xFF408efF3894786B2e25D208b553669B13DA998E",
       },
     },
   },
