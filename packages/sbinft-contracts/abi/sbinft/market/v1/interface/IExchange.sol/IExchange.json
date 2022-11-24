@@ -9,7 +9,7 @@
         {
           "indexed": true,
           "internalType": "uint256",
-          "name": "nounce",
+          "name": "nonce",
           "type": "uint256"
         }
       ],
@@ -22,7 +22,7 @@
         {
           "indexed": true,
           "internalType": "uint256",
-          "name": "nounce",
+          "name": "nonce",
           "type": "uint256"
         }
       ],
@@ -114,7 +114,7 @@
             },
             {
               "internalType": "uint256",
-              "name": "nounce",
+              "name": "nonce",
               "type": "uint256"
             }
           ],
@@ -223,7 +223,7 @@
             },
             {
               "internalType": "uint256",
-              "name": "nounce",
+              "name": "nonce",
               "type": "uint256"
             }
           ],
@@ -240,7 +240,7 @@
           "components": [
             {
               "internalType": "uint256",
-              "name": "saleNounce",
+              "name": "saleNonce",
               "type": "uint256"
             },
             {
