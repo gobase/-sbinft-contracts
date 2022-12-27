@@ -274,6 +274,11 @@
               "internalType": "struct OrderDomain.Payment",
               "name": "paymentDetails",
               "type": "tuple"
+            },
+            {
+              "internalType": "uint256",
+              "name": "validUntil",
+              "type": "uint256"
             }
           ],
           "internalType": "struct OrderDomain.BuyOrder",
