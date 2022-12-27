@@ -336,13 +336,18 @@
       "inputs": [
         {
           "internalType": "address",
-          "name": "_collection",
+          "name": "collection",
           "type": "address"
         },
         {
           "internalType": "address payable",
-          "name": "_partnerFeeReceiver",
+          "name": "partnerFeeReceiver",
           "type": "address"
+        },
+        {
+          "internalType": "bytes",
+          "name": "sign",
+          "type": "bytes"
         }
       ],
       "name": "updatePartnerFeeReceiver",
