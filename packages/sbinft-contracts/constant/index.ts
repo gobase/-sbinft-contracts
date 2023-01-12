@@ -74,6 +74,7 @@ const MARKET_V1 = {
       { name: "buyer", type: "address" },
       { name: "payer", type: "address" },
       { name: "paymentDetails", type: "Payment" },
+      { name: "validUntil", type: "uint256" },
     ],
   },
   ROYALTY_REGISTRY_NAME: "SBINFT RoyaltyRegistry",
