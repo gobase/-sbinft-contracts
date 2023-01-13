@@ -21,6 +21,7 @@ const MARKET_V1 = {
     mumbai: {
       Proxy: {
         SBINFTForwarder: "0xf33341Af610F70CF3847C9683c5c5A4b0207443a",
+        SBINFTMultiCall: "0xE57692B005B6Fb690a29b402459835a9bA080784",
         Exchange: "0x698ef268F3525cDAA2e2143c0BE732bE02D45A4a",
         RoyaltyRegistry: "0xeA608dEf0a4bbA902caD9Fb0364e67Bead20e302",
         TransferProxy: "0x159bE038c1110313b030FE8a3f703AaBF0c3010e",
@@ -28,6 +29,7 @@ const MARKET_V1 = {
       },
       Implementation: {
         SBINFTForwarder: "0xE5c4224f7AEb85C3c0c2BDa02286bf8d5A83BC22",
+        SBINFTMultiCall: "0x6E74A38c30B68A94Ff62C065F65F287eefEAd7B6",
         Exchange: "0x5e4217040cdc17cbaA1329B405F8c2ff40e40D88",
         RoyaltyRegistry: "0xe3c3c77e1dAff748d73a004C8a18f10f9Ffbe8b5",
         TransferProxy: "0x2b3A6551458852414d6B3B4467Ad1948b6f43600",
