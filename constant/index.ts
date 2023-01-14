@@ -1,23 +1,22 @@
 const MARKET_V1 = {
   address: {
     goerli: {
-        Proxy: {
-          SBINFTForwarder: '0x1E5BA945b166D72B3B87f6003BB8E8e2b6A7cEe6',
-          SBINFTMultiCall: "0x687dea2daebD8f61BfbAfC9d975523933F3a4700",
-          Exchange: '0x82F1bEfE4B33a0638227D5af8990798c11eE54D6',
-          RoyaltyRegistry: '0xB9693dCb846B1dBd2BEd4A2AA8Ee67aC1F4e2135',
-          TransferProxy: '0xf21a39443F02318F8dd55fcD1f28822886c04e6a',
-          PlatformRegistry: '0xA284CD5d0eE8FEEcBeC7558144200df434b7D99f'
-        },
-        Implementation: {
-          SBINFTForwarder: '0xFF408efF3894786B2e25D208b553669B13DA998E',
-          SBINFTMultiCall: "0x2D439911b02DfD86A2f4e1720baF3e83E7091301",
-          Exchange: '0x9D16Fd013bDf9d224485722f77A44fD4c92685C1',
-          RoyaltyRegistry: '0x0Ec6d1B228411703B4137c2E4e9EF287596B3A26',
-          TransferProxy: '0x1dDebc783BeB44764dEe2bb16Ca17392655B1B3C',
-          PlatformRegistry: '0x5e5AC07Af8Fac3f7c42BAA506D7CcB194bAD4cE0'
-        }
-      }
+      Proxy: {
+        SBINFTForwarder: "0x1E5BA945b166D72B3B87f6003BB8E8e2b6A7cEe6",
+        SBINFTMultiCall: "0x687dea2daebD8f61BfbAfC9d975523933F3a4700",
+        Exchange: "0x82F1bEfE4B33a0638227D5af8990798c11eE54D6",
+        RoyaltyRegistry: "0xB9693dCb846B1dBd2BEd4A2AA8Ee67aC1F4e2135",
+        TransferProxy: "0xf21a39443F02318F8dd55fcD1f28822886c04e6a",
+        PlatformRegistry: "0xA284CD5d0eE8FEEcBeC7558144200df434b7D99f",
+      },
+      Implementation: {
+        SBINFTForwarder: "0xFF408efF3894786B2e25D208b553669B13DA998E",
+        SBINFTMultiCall: "0x2D439911b02DfD86A2f4e1720baF3e83E7091301",
+        Exchange: "0x9D16Fd013bDf9d224485722f77A44fD4c92685C1",
+        RoyaltyRegistry: "0x0Ec6d1B228411703B4137c2E4e9EF287596B3A26",
+        TransferProxy: "0x1dDebc783BeB44764dEe2bb16Ca17392655B1B3C",
+        PlatformRegistry: "0x5e5AC07Af8Fac3f7c42BAA506D7CcB194bAD4cE0",
+      },
     },
     mumbai: {
       Proxy: {
