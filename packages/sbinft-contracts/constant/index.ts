@@ -2,20 +2,20 @@ const MARKET_V1 = {
   address: {
     goerli: {
       Proxy: {
-        SBINFTForwarder: "0x4f15D2F897A5561a536F09aDa698176f0ccC6945",
+        SBINFTForwarder: "0x1E5BA945b166D72B3B87f6003BB8E8e2b6A7cEe6",
         SBINFTMultiCall: "0x687dea2daebD8f61BfbAfC9d975523933F3a4700",
-        Exchange: "0x9b4f155eB58aC1E5B50f003A0F675B8Fcd97B46D",
-        RoyaltyRegistry: "0xcE0Eb8E962008323319B2883e740cb30Bd511E14",
-        TransferProxy: "0x0551122D05e47516176e6598fe38412DAfaE60B8",
-        PlatformRegistry: "0xDa7eb3220E93A129C98CF6aD15bCA9F1a15b8144",
+        Exchange: "0x82F1bEfE4B33a0638227D5af8990798c11eE54D6",
+        RoyaltyRegistry: "0xB9693dCb846B1dBd2BEd4A2AA8Ee67aC1F4e2135",
+        TransferProxy: "0xf21a39443F02318F8dd55fcD1f28822886c04e6a",
+        PlatformRegistry: "0xA284CD5d0eE8FEEcBeC7558144200df434b7D99f",
       },
       Implementation: {
         SBINFTForwarder: "0xFF408efF3894786B2e25D208b553669B13DA998E",
         SBINFTMultiCall: "0x2D439911b02DfD86A2f4e1720baF3e83E7091301",
-        Exchange: "0x85BE186944E6fE7C5717e83545eFd6a151Eb788B",
-        RoyaltyRegistry: "0x4C25E65F323FE896adE0D0B885fd93b57d40FD38",
-        TransferProxy: "0xa103395bBe7c38Efe79f6d69ae9F771E5FD8D9C7",
-        PlatformRegistry: "0x2Ef982A0a47143783e8514eEfF488bA53a8E7Bd3",
+        Exchange: "0x9D16Fd013bDf9d224485722f77A44fD4c92685C1",
+        RoyaltyRegistry: "0x0Ec6d1B228411703B4137c2E4e9EF287596B3A26",
+        TransferProxy: "0x1dDebc783BeB44764dEe2bb16Ca17392655B1B3C",
+        PlatformRegistry: "0x5e5AC07Af8Fac3f7c42BAA506D7CcB194bAD4cE0",
       },
     },
     mumbai: {
@@ -34,6 +34,38 @@ const MARKET_V1 = {
         RoyaltyRegistry: "0xe3c3c77e1dAff748d73a004C8a18f10f9Ffbe8b5",
         TransferProxy: "0x2b3A6551458852414d6B3B4467Ad1948b6f43600",
         PlatformRegistry: "0x82656aeeEcb04820aFac5C2f0b7d7a33E00A53Ee",
+      },
+    },
+    polygon: {
+      Proxy: {
+        SBINFTForwarder: "0x944d1a6FC282f5F79054e17B829c59fbC50bE348",
+        Exchange: "0x08d12249846A786813F9B34c04e021c2060cFB62",
+        RoyaltyRegistry: "0xe9fa6B27B8645DbA1313A7b7dA4276247DeBC9Aa",
+        TransferProxy: "0x594cA98aa711dd134315Cef388eDb4522b984747",
+        PlatformRegistry: "0xCdC45Ee96881326283eB2F2A768C1A9C6FafC402",
+      },
+      Implementation: {
+        SBINFTForwarder: "0x3cC65ae5ae673912E90A39f03d24b40955012847",
+        Exchange: "0xB9A83eb825bBeF7336e852C73A27E41F05503d65",
+        RoyaltyRegistry: "0x95fB25701C5540239A39edC1B03316F67c44A3F7",
+        TransferProxy: "0x2AD721a320A8AA41b6C2f5781f92fcd89dc44ee6",
+        PlatformRegistry: "0xE392A876229b420B30b2e0c399C8427A09014f2a",
+      },
+    },
+    mainnet: {
+      Proxy: {
+        SBINFTForwarder: "0xCcB6a41b93A6C326A91652CA816bE6A9fAeAC1B9",
+        Exchange: "0xBcBC9b9Fc75E8E32c5b8baFd9ed7f653378A7809",
+        RoyaltyRegistry: "0x568c76da3427E234Fd9Da49444A16296Fa1f7184",
+        TransferProxy: "0xa6B8f8C34E86424674FAf648123e767Ac5b5C7DD",
+        PlatformRegistry: "0xd613B3749A969B6D1Fc0b182E2dAE8d30901375C",
+      },
+      Implementation: {
+        SBINFTForwarder: "0x2564C8Ac021Fa8cddf83C5e9e63A8edaf37c907d",
+        Exchange: "0x64f1DB9e431c13a6811B61AE7E3cEc266b766ff1",
+        RoyaltyRegistry: "0x164b686350203888A8058c7c883dA1e1b047d145",
+        TransferProxy: "0x6f743075eB0511582e783Fa8f5a23942804f6417",
+        PlatformRegistry: "0xa11EE75B7c74f4f1072635fae454d2113bD17915",
       },
     },
   },
