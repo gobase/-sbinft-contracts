@@ -36,6 +36,38 @@ const MARKET_V1 = {
         PlatformRegistry: "0x82656aeeEcb04820aFac5C2f0b7d7a33E00A53Ee",
       },
     },
+    polygon: {
+      Proxy: {
+        SBINFTForwarder: "0x944d1a6FC282f5F79054e17B829c59fbC50bE348",
+        Exchange: "0x08d12249846A786813F9B34c04e021c2060cFB62",
+        RoyaltyRegistry: "0xe9fa6B27B8645DbA1313A7b7dA4276247DeBC9Aa",
+        TransferProxy: "0x594cA98aa711dd134315Cef388eDb4522b984747",
+        PlatformRegistry: "0xCdC45Ee96881326283eB2F2A768C1A9C6FafC402",
+      },
+      Implementation: {
+        SBINFTForwarder: "0x3cC65ae5ae673912E90A39f03d24b40955012847",
+        Exchange: "0xB9A83eb825bBeF7336e852C73A27E41F05503d65",
+        RoyaltyRegistry: "0x95fB25701C5540239A39edC1B03316F67c44A3F7",
+        TransferProxy: "0x2AD721a320A8AA41b6C2f5781f92fcd89dc44ee6",
+        PlatformRegistry: "0xE392A876229b420B30b2e0c399C8427A09014f2a",
+      },
+    },
+    mainnet: {
+      Proxy: {
+        SBINFTForwarder: "0xCcB6a41b93A6C326A91652CA816bE6A9fAeAC1B9",
+        Exchange: "0xBcBC9b9Fc75E8E32c5b8baFd9ed7f653378A7809",
+        RoyaltyRegistry: "0x568c76da3427E234Fd9Da49444A16296Fa1f7184",
+        TransferProxy: "0xa6B8f8C34E86424674FAf648123e767Ac5b5C7DD",
+        PlatformRegistry: "0xd613B3749A969B6D1Fc0b182E2dAE8d30901375C",
+      },
+      Implementation: {
+        SBINFTForwarder: "0x2564C8Ac021Fa8cddf83C5e9e63A8edaf37c907d",
+        Exchange: "0x64f1DB9e431c13a6811B61AE7E3cEc266b766ff1",
+        RoyaltyRegistry: "0x164b686350203888A8058c7c883dA1e1b047d145",
+        TransferProxy: "0x6f743075eB0511582e783Fa8f5a23942804f6417",
+        PlatformRegistry: "0xa11EE75B7c74f4f1072635fae454d2113bD17915",
+      },
+    },
   },
   EXCHANGE_CONTRACT_NAME: "SBINFT Exchange",
   EXCHANGE_CONTRACT_VERSION: "1.0",
