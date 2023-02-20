@@ -30,6 +30,7 @@ describe("Admin", function () {
   describe("Post deployment checks", function () {
     it("check deployer is an admin", async function () {
       expect(await cAdminMock.isAdmin(deployer.address)).to.equal(true);
+      expect(await cAdminMock.getAdminList()).to.deep.equal([deployer.address]);
     });
 
     it("non deployer is not admin", async function () {
@@ -49,6 +50,7 @@ describe("Admin", function () {
       expect(await cAdminMock.isAdmin(ethers.constants.AddressZero)).to.equal(
         false
       );
+      expect(await cAdminMock.getAdminList()).to.deep.equal([deployer.address]);
     });
 
     it("can add admin", async function () {
@@ -68,6 +70,11 @@ describe("Admin", function () {
 
       expect(await cAdminMock.isAdmin(address2.address)).to.equal(true);
       expect(await cAdminMock.isAdmin(address1.address)).to.equal(true);
+      expect(await cAdminMock.getAdminList()).to.deep.equal([
+        deployer.address,
+        address1.address,
+        address2.address,
+      ]);
     });
 
     it("[R]can not add admin from non admin signer", async function () {
@@ -111,6 +118,11 @@ describe("Admin", function () {
       expect(eventSignature).to.include.members(["AdminAdded(address)"]);
 
       expect(await cAdminMock.isAdmin(address1.address)).to.equal(true);
+
+      expect(await cAdminMock.getAdminList()).to.deep.equal([
+        deployer.address,
+        address1.address,
+      ]);
     });
   });
 
@@ -135,6 +147,12 @@ describe("Admin", function () {
       await expect(
         cAdminMock.connect(address1).removeAdmin(address2.address)
       ).to.be.revertedWith(cremoveNonExistAdminError);
+
+      expect(await cAdminMock.isAdmin(address1.address)).to.equal(true);
+      expect(await cAdminMock.getAdminList()).to.deep.equal([
+        deployer.address,
+        address1.address,
+      ]);
     });
 
     it("can remove admin", async function () {
@@ -150,6 +168,49 @@ describe("Admin", function () {
       expect(eventSignature).to.include.members(["AdminRemoved(address)"]);
 
       expect(await cAdminMock.isAdmin(address1.address)).to.equal(false);
+
+      expect(await cAdminMock.getAdminList()).to.deep.equal([deployer.address]);
+    });
+
+    it("can add removed admin again", async function () {
+      cAdminMock["addAdmin(address)"](address1.address);
+      expect(await cAdminMock.isAdmin(address1.address)).to.equal(true);
+
+      const reemoveAdminTx = await cAdminMock.removeAdmin(address1.address);
+
+      const receipt: ContractReceipt = await reemoveAdminTx.wait();
+      const { events } = receipt;
+
+      expect(events).to.be.an("array").to.have.lengthOf(1);
+      const eventSignature = events?.map((item) => item.eventSignature);
+      expect(eventSignature).to.include.members(["AdminRemoved(address)"]);
+
+      expect(await cAdminMock.isAdmin(address1.address)).to.equal(false);
+
+      expect(await cAdminMock.getAdminList()).to.deep.equal([deployer.address]);
+
+      cAdminMock["addAdmin(address)"](address1.address);
+      expect(await cAdminMock.isAdmin(address1.address)).to.equal(true);
+
+      expect(await cAdminMock.getAdminList()).to.deep.equal([
+        deployer.address,
+        address1.address,
+      ]);
+    });
+
+    it("can remove last admin", async function () {
+      const reemoveAdminTx = await cAdminMock.removeAdmin(deployer.address);
+
+      const receipt: ContractReceipt = await reemoveAdminTx.wait();
+      const { events } = receipt;
+
+      expect(events).to.be.an("array").to.have.lengthOf(1);
+      const eventSignature = events?.map((item) => item.eventSignature);
+      expect(eventSignature).to.include.members(["AdminRemoved(address)"]);
+
+      expect(await cAdminMock.isAdmin(deployer.address)).to.equal(false);
+
+      expect(await cAdminMock.getAdminList()).to.deep.equal([]);
     });
   });
 
@@ -167,6 +228,17 @@ describe("Admin", function () {
     it("check admin ", async function () {
       expect(await cAdminMock.isAdmin(deployer.address)).to.equal(true);
       expect(await cAdminMock.isAdmin(address1.address)).to.equal(false);
+    });
+  });
+
+  describe("getAdminList", function () {
+    it("get admin list", async function () {
+      cAdminMock["addAdmin(address)"](address1.address);
+
+      expect(await cAdminMock.getAdminList()).to.deep.equal([
+        deployer.address,
+        address1.address,
+      ]);
     });
   });
 });
