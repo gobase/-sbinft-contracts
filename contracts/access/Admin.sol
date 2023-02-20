@@ -13,6 +13,11 @@ abstract contract Admin is Context {
   mapping(address => bool) private _admin;
 
   /**
+   * @dev 管理者のリスト
+   */
+  address[] private _adminList;
+
+  /**
    * @dev デプロイ時にデプロイ者を管理者に追加する。
    */
   constructor() {
@@ -45,6 +50,11 @@ abstract contract Admin is Context {
       "Admin:addAdmin newAdmin is the zero address"
     );
 
+    // 管理者のリストにまだ追加されていなければ追加
+    if (!_admin[newAdmin]) {
+      _adminList.push(newAdmin);
+    }
+
     _admin[newAdmin] = true;
     emit AdminAdded(newAdmin);
   }
@@ -67,6 +77,18 @@ abstract contract Admin is Context {
    */
   function _removeAdmin(address admin) internal virtual {
     delete _admin[admin];
+
+    // 該当の管理者を削除した配列を生成する
+    address[] memory newAdminList = new address[](_adminList.length - 1);
+    uint256 count = 0;
+    for (uint256 i = 0; i < _adminList.length; i++) {
+      if (_admin[_adminList[i]]) {
+        newAdminList[count] = _adminList[i];
+        count++;
+      }
+    }
+    _adminList = newAdminList;
+
     emit AdminRemoved(admin);
   }
 
@@ -76,6 +98,14 @@ abstract contract Admin is Context {
    */
   function isAdmin(address checkAdmin) public view virtual returns (bool) {
     return _admin[checkAdmin];
+  }
+
+  /**
+   * @dev
+   * Adminのリストを取得
+   */
+  function getAdminList() public view virtual returns (address[] memory) {
+    return _adminList;
   }
 
   /**
