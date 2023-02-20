@@ -12,6 +12,8 @@ abstract contract AdminUpgradeable is ContextUpgradeable {
    */
   mapping(address => bool) private _admin;
 
+  address[] private _adminList;
+
   function __Admin_init() internal onlyInitializing {
     __Context_init();
     // 初期化時にデプロイ者を管理者に追加する。
@@ -44,7 +46,12 @@ abstract contract AdminUpgradeable is ContextUpgradeable {
       "Admin:addAdmin newAdmin is the zero address"
     );
 
+    if (!_admin[newAdmin]) {
+      _adminList.push(newAdmin);
+    }
+
     _admin[newAdmin] = true;
+
     emit AdminAdded(newAdmin);
   }
 
@@ -56,7 +63,6 @@ abstract contract AdminUpgradeable is ContextUpgradeable {
       _admin[admin],
       "Admin:removeAdmin trying to remove non existing Admin"
     );
-
     _removeAdmin(admin);
   }
 
@@ -66,6 +72,15 @@ abstract contract AdminUpgradeable is ContextUpgradeable {
    */
   function _removeAdmin(address admin) internal virtual {
     delete _admin[admin];
+    address[] memory newAdminList = new address[](_adminList.length - 1);
+    uint256 count = 0;
+    for (uint256 i = 0; i < _adminList.length; i++) {
+      if (!_admin[_adminList[i]]) {
+        newAdminList[count] = _adminList[i];
+        count++;
+      }
+    }
+    _adminList = newAdminList;
     emit AdminRemoved(admin);
   }
 
@@ -75,6 +90,14 @@ abstract contract AdminUpgradeable is ContextUpgradeable {
    */
   function isAdmin(address checkAdmin) public view virtual returns (bool) {
     return _admin[checkAdmin];
+  }
+
+  /**
+   * @dev
+   * Adminのリストを取得
+   */
+  function getAdminList() public view virtual returns (address[] memory) {
+    return _adminList;
   }
 
   /**
