@@ -17,6 +17,7 @@
     "lint:sol:fix": "prettier --write .",
     "coverage": "env COVERAGE=true hardhat coverage",
     "test": "hardhat test",
+    "test-a": "hardhat test test/access/Admin.test.ts",
     "test-au": "hardhat test test/upgradeable/AdminUpgradeable.test.ts",
     "gas-report": "env REPORT_GAS=true yarn run test",
     "compile": "hardhat compile",
