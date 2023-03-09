@@ -134,6 +134,27 @@ const MARKET_V1 = {
   },
 };
 
+const COLLECTION = {
+  address: {
+    goerli: {},
+    mumbai: {
+      NANAKUSA_FACTORY: "0x508c649A3ac6F7d52109EAAD9b396dd2F4C5309c",
+    },
+    polygon: {},
+    mainnet: {},
+  },
+  NANAKUSA_FROM_FACTORY_CONTRACT_NAME: "SBINFT Factory Nanakusa NFT",
+  NANAKUSA_FROM_FACTORY_CONTRACT_VERSION: "1.0",
+  NANAKUSA_MINT_DATA_TYPE: {
+    MintData: [
+      { name: "creator", type: "address" },
+      { name: "nftId", type: "uint256" },
+      { name: "tokenURI", type: "string" },
+    ],
+  },
+};
+
 module.exports = {
   MARKET_V1,
+  COLLECTION,
 };
