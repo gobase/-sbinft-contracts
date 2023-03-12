@@ -1,3 +1,56 @@
+const GATEWAY_V1 = {
+  address: {
+    goerli: {
+      Proxy: {
+        SBINFTForwarder: "0x1E5BA945b166D72B3B87f6003BB8E8e2b6A7cEe6",
+        SBINFTMultiCall: "0x687dea2daebD8f61BfbAfC9d975523933F3a4700",
+      },
+      Implementation: {
+        SBINFTForwarder: "0xFF408efF3894786B2e25D208b553669B13DA998E",
+        SBINFTMultiCall: "0x2D439911b02DfD86A2f4e1720baF3e83E7091301",
+      },
+    },
+    mumbai: {
+      Proxy: {
+        SBINFTForwarder: "0xf33341Af610F70CF3847C9683c5c5A4b0207443a",
+        SBINFTMultiCall: "0xE57692B005B6Fb690a29b402459835a9bA080784",
+      },
+      Implementation: {
+        SBINFTForwarder: "0xE5c4224f7AEb85C3c0c2BDa02286bf8d5A83BC22",
+        SBINFTMultiCall: "0x6E74A38c30B68A94Ff62C065F65F287eefEAd7B6",
+      },
+    },
+    polygon: {
+      Proxy: {
+        SBINFTForwarder: "0x944d1a6FC282f5F79054e17B829c59fbC50bE348",
+      },
+      Implementation: {
+        SBINFTForwarder: "0x3cC65ae5ae673912E90A39f03d24b40955012847",
+      },
+    },
+    mainnet: {
+      Proxy: {
+        SBINFTForwarder: "0xCcB6a41b93A6C326A91652CA816bE6A9fAeAC1B9",
+      },
+      Implementation: {
+        SBINFTForwarder: "0x2564C8Ac021Fa8cddf83C5e9e63A8edaf37c907d",
+      },
+    },
+  },
+  SBINFT_FORWARDER_CALL_CONTRACT_NAME: "SBINFT Forwarder",
+  SBINFT_FORWARDER_CONTRACT_VERSION: "1.0",
+  FORWARD_REQUEST_TYPE: {}, // FIXME: Add Type
+  MULTI_CALL_CONTRACT_NAME: "SBINFT MultiCall",
+  MULTI_CALL_CONTRACT_VERSION: "1.0",
+  CALL_INFO_TYPE: {
+    Call: [
+      { name: "target", type: "address" },
+      { name: "value", type: "uint256" },
+    ],
+    CallInfo: [{ name: "callList", type: "Call[]" }],
+  },
+};
+
 const MARKET_V1 = {
   address: {
     goerli: {
@@ -136,12 +189,18 @@ const MARKET_V1 = {
 
 const COLLECTION = {
   address: {
-    goerli: {},
-    mumbai: {
-      NANAKUSA_FACTORY: "0x508c649A3ac6F7d52109EAAD9b396dd2F4C5309c",
+    goerli: {
+      NANAKUSA_FACTORY: "0x0000000000000000000000000000000000000000",
     },
-    polygon: {},
-    mainnet: {},
+    mumbai: {
+      NANAKUSA_FACTORY: "0xa85E34bD5395558d43e4284975e5d85e57498053",
+    },
+    polygon: {
+      NANAKUSA_FACTORY: "0x0000000000000000000000000000000000000000",
+    },
+    mainnet: {
+      NANAKUSA_FACTORY: "0x0000000000000000000000000000000000000000",
+    },
   },
   NANAKUSA_FROM_FACTORY_CONTRACT_NAME: "SBINFT Factory Nanakusa NFT",
   NANAKUSA_FROM_FACTORY_CONTRACT_VERSION: "1.0",
@@ -155,6 +214,7 @@ const COLLECTION = {
 };
 
 module.exports = {
+  GATEWAY_V1,
   MARKET_V1,
   COLLECTION,
 };
