@@ -3,21 +3,21 @@ const GATEWAY_V1 = {
     goerli: {
       Proxy: {
         SBINFTForwarder: "0x1E5BA945b166D72B3B87f6003BB8E8e2b6A7cEe6",
-        SBINFTMultiCall: "0x687dea2daebD8f61BfbAfC9d975523933F3a4700",
+        SBINFTMultiCall: "0xf55537213A7a128465f32b671E89D4878CB39A72",
       },
       Implementation: {
         SBINFTForwarder: "0xFF408efF3894786B2e25D208b553669B13DA998E",
-        SBINFTMultiCall: "0x2D439911b02DfD86A2f4e1720baF3e83E7091301",
+        SBINFTMultiCall: "0x0b803bfcC5200D6860C49f59113042dac4ed2444",
       },
     },
     mumbai: {
       Proxy: {
         SBINFTForwarder: "0xf33341Af610F70CF3847C9683c5c5A4b0207443a",
-        SBINFTMultiCall: "0xE57692B005B6Fb690a29b402459835a9bA080784",
+        SBINFTMultiCall: "0x725AEca8AB5eE8a9c29D71946CEF723e7F9F38C3",
       },
       Implementation: {
         SBINFTForwarder: "0xE5c4224f7AEb85C3c0c2BDa02286bf8d5A83BC22",
-        SBINFTMultiCall: "0x6E74A38c30B68A94Ff62C065F65F287eefEAd7B6",
+        SBINFTMultiCall: "0x5CE6D38A000C96F1C9a54df66704080efaee5DBd",
       },
     },
     polygon: {
@@ -37,14 +37,24 @@ const GATEWAY_V1 = {
       },
     },
   },
-  SBINFT_FORWARDER_CALL_CONTRACT_NAME: "SBINFT Forwarder",
+  SBINFT_FORWARDER_CALL_CONTRACT_NAME: "SBINFTForwarder",
   SBINFT_FORWARDER_CONTRACT_VERSION: "1.0",
-  FORWARD_REQUEST_TYPE: {}, // FIXME: Add Type
+  FORWARD_REQUEST_TYPE: {
+    ForwardRequest: [
+      { name: "from", type: "address" },
+      { name: "to", type: "address" },
+      { name: "value", type: "uint256" },
+      { name: "gas", type: "uint256" },
+      { name: "nonce", type: "uint256" },
+      { name: "data", type: "bytes" },
+    ],
+  },
   MULTI_CALL_CONTRACT_NAME: "SBINFT MultiCall",
   MULTI_CALL_CONTRACT_VERSION: "1.0",
   CALL_INFO_TYPE: {
     Call: [
       { name: "target", type: "address" },
+      { name: "callData", type: "bytes" },
       { name: "value", type: "uint256" },
     ],
     CallInfo: [{ name: "callList", type: "Call[]" }],
@@ -193,7 +203,7 @@ const COLLECTION = {
       NANAKUSA_FACTORY: "0x0000000000000000000000000000000000000000",
     },
     mumbai: {
-      NANAKUSA_FACTORY: "0xa85E34bD5395558d43e4284975e5d85e57498053",
+      NANAKUSA_FACTORY: "0xe6e14C75646B9c3473A992Aabc50aFd782127FE0",
     },
     polygon: {
       NANAKUSA_FACTORY: "0x0000000000000000000000000000000000000000",
@@ -202,7 +212,7 @@ const COLLECTION = {
       NANAKUSA_FACTORY: "0x0000000000000000000000000000000000000000",
     },
   },
-  NANAKUSA_FROM_FACTORY_CONTRACT_NAME: "SBINFT Factory Nanakusa NFT",
+  NANAKUSA_FROM_FACTORY_CONTRACT_NAME: "SBINFT Nanakusa Factoy NFT",
   NANAKUSA_FROM_FACTORY_CONTRACT_VERSION: "1.0",
   NANAKUSA_MINT_DATA_TYPE: {
     MintData: [
