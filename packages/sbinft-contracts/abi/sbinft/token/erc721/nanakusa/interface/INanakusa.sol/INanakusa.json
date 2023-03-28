@@ -43,6 +43,19 @@
       "type": "function"
     },
     {
+      "inputs": [],
+      "name": "getLastMintedTokenId",
+      "outputs": [
+        {
+          "internalType": "uint256",
+          "name": "",
+          "type": "uint256"
+        }
+      ],
+      "stateMutability": "view",
+      "type": "function"
+    },
+    {
       "inputs": [
         {
           "internalType": "address",
@@ -58,6 +71,81 @@
           "type": "bool"
         }
       ],
+      "stateMutability": "nonpayable",
+      "type": "function"
+    },
+    {
+      "inputs": [
+        {
+          "components": [
+            {
+              "internalType": "address",
+              "name": "creator",
+              "type": "address"
+            },
+            {
+              "internalType": "uint256",
+              "name": "nftId",
+              "type": "uint256"
+            },
+            {
+              "internalType": "string",
+              "name": "tokenURI",
+              "type": "string"
+            }
+          ],
+          "internalType": "struct INanakusa.MintData",
+          "name": "mintData",
+          "type": "tuple"
+        },
+        {
+          "internalType": "address",
+          "name": "transferTo",
+          "type": "address"
+        },
+        {
+          "internalType": "bytes",
+          "name": "mintSign",
+          "type": "bytes"
+        }
+      ],
+      "name": "lazyMintAndTransfer",
+      "outputs": [],
+      "stateMutability": "nonpayable",
+      "type": "function"
+    },
+    {
+      "inputs": [
+        {
+          "components": [
+            {
+              "internalType": "address",
+              "name": "creator",
+              "type": "address"
+            },
+            {
+              "internalType": "uint256",
+              "name": "nftId",
+              "type": "uint256"
+            },
+            {
+              "internalType": "string",
+              "name": "tokenURI",
+              "type": "string"
+            }
+          ],
+          "internalType": "struct INanakusa.MintData",
+          "name": "mintData",
+          "type": "tuple"
+        },
+        {
+          "internalType": "bytes",
+          "name": "mintSign",
+          "type": "bytes"
+        }
+      ],
+      "name": "mintToken",
+      "outputs": [],
       "stateMutability": "nonpayable",
       "type": "function"
     },
