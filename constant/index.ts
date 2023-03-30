@@ -23,17 +23,21 @@ const GATEWAY_V1 = {
     polygon: {
       Proxy: {
         SBINFTForwarder: "0x944d1a6FC282f5F79054e17B829c59fbC50bE348",
+        SBINFTMultiCall: "0x10328A984C69d3C45Bd4777b6604597f031f804D",
       },
       Implementation: {
         SBINFTForwarder: "0x3cC65ae5ae673912E90A39f03d24b40955012847",
+        SBINFTMultiCall: "0xD77Accd7A63f568Bf17A0694117a17CF4c4791bA",
       },
     },
     mainnet: {
       Proxy: {
         SBINFTForwarder: "0xCcB6a41b93A6C326A91652CA816bE6A9fAeAC1B9",
+        SBINFTMultiCall: "0x77fb62b25D1EE9F28c35120ECE2b6e04942a435b",
       },
       Implementation: {
         SBINFTForwarder: "0x2564C8Ac021Fa8cddf83C5e9e63A8edaf37c907d",
+        SBINFTMultiCall: "0x1a43ea3edD0696723e397069883a31fCD8681d50",
       },
     },
   },
@@ -206,10 +210,10 @@ const COLLECTION = {
       NANAKUSA_FACTORY: "0x16895060eCd8C29E1a6625B02bF8425102B620e3",
     },
     polygon: {
-      NANAKUSA_FACTORY: "0x0000000000000000000000000000000000000000",
+      NANAKUSA_FACTORY: "0x3791Ceb91c8bEA59d839E86f30E1158932C7B10d",
     },
     mainnet: {
-      NANAKUSA_FACTORY: "0x0000000000000000000000000000000000000000",
+      NANAKUSA_FACTORY: "0x4c1a91c6aa88d27dBAEf24D5FBD1cA1Ade5Bd6d7",
     },
   },
   NANAKUSA_FROM_FACTORY_CONTRACT_NAME: "SBINFT Nanakusa Factoy NFT",
