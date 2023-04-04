@@ -47,7 +47,7 @@ console.log(exchangeJSON.abi);
 ```
 
 # [constants](https://github.com/gobase/sbinft-contracts/tree/master/constant)
-It contains address and data type definition for siging using EIP-712.
+It contains address and data type definition for signing using EIP-712.
 ### Supported network:
 - **goerli**
 - **mumbai**
