@@ -20,6 +20,26 @@ const GATEWAY_V1 = {
         SBINFTMultiCall: "0x5CE6D38A000C96F1C9a54df66704080efaee5DBd",
       },
     },
+    oas_hvtest: {
+      Proxy: {
+        SBINFTForwarder: "0xD05E40ccF2dBe9A470FF5f6B085BF7Bd75020D35",
+        SBINFTMultiCall: "0x4f15D2F897A5561a536F09aDa698176f0ccC6945",
+      },
+      Implementation: {
+        SBINFTForwarder: "0x055A72CD68cD096E0fA45D9A8075e01443B80919",
+        SBINFTMultiCall: "0x326D42D8216B15BA4BFa4D51bd8b63EB12D3B8f3",
+      },
+    },
+    oas_hvmainnet: {
+      Proxy: {
+        SBINFTForwarder: "0x21772C6a9af37EE79a855c0b5A1d93B5643eC761",
+        SBINFTMultiCall: "0x511DD875f682E666b433B3BF0C295b5DCCF2fEDc",
+      },
+      Implementation: {
+        SBINFTForwarder: "0xE5c4224f7AEb85C3c0c2BDa02286bf8d5A83BC22",
+        SBINFTMultiCall: "0x80b300c5a3424A21153f7dcd4492474B8b0a8151",
+      },
+    },
     polygon: {
       Proxy: {
         SBINFTForwarder: "0x944d1a6FC282f5F79054e17B829c59fbC50bE348",
@@ -93,6 +113,34 @@ const MARKET_V1 = {
         RoyaltyRegistry: "0xe3c3c77e1dAff748d73a004C8a18f10f9Ffbe8b5",
         TransferProxy: "0x2b3A6551458852414d6B3B4467Ad1948b6f43600",
         PlatformRegistry: "0x82656aeeEcb04820aFac5C2f0b7d7a33E00A53Ee",
+      },
+    },
+    oas_hvtest: {
+      Proxy: {
+        Exchange: "0x044F72D36d1be6cEdB091c8406116afb90599915",
+        RoyaltyRegistry: "0x92c2B3da780C25adCED6a98098ddb71def328e23",
+        TransferProxy: "0x5f12c48856eA2654dE3a549D7D751FcD36D57398",
+        PlatformRegistry: "0xa847539748E0eBAabaa4d09A0CBb6BF31D9Ed6a7",
+      },
+      Implementation: {
+        Exchange: "0xe28c82489D93509059fFf269CCFbbF77EfcE49D3",
+        RoyaltyRegistry: "0x24bD764F6bCE1642DdF5A7a6f9aE73a55276b5F8",
+        TransferProxy: "0xf4DCb2081BCfa71553E453f59B6A6E82b540bb43",
+        PlatformRegistry: "0x60449a3135FCcfD234951a0253068FD0312C7e55",
+      },
+    },
+    oas_hvmainnet: {
+      Proxy: {
+        Exchange: "0x26B07AD16cBFb652eD6611087EC9F45b8E16Ace3",
+        RoyaltyRegistry: "0xE1d6412CD70A1Ff2185C59Fff2c92cFb745113Fb",
+        TransferProxy: "0x6B2f88c9f445e6Af816e7b144BF48FA9ec6EB72d",
+        PlatformRegistry: "0x63fe86B60271aca06b28a7F0D71A2C9Cf2C6A1DB",
+      },
+      Implementation: {
+        Exchange: "0xd56E271bc4A63ecFd73eB3076D3b00230de416CB",
+        RoyaltyRegistry: "0xa85Bdf75e633717Cb310bd9beF1b15257d47A1bc",
+        TransferProxy: "0x52B6E5a01213414952e72B96039D7FF5637598Ea",
+        PlatformRegistry: "0xEa8220431F7E3e430447BdF049B76a6eC0Add2AD",
       },
     },
     polygon: {
