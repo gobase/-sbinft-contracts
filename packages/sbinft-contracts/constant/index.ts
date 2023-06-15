@@ -245,6 +245,12 @@ const COLLECTION = {
     mumbai: {
       NANAKUSA_FACTORY: "0x16895060eCd8C29E1a6625B02bF8425102B620e3",
     },
+    oas_hvtest: {
+      NANAKUSA_FACTORY: "0xa103395bBe7c38Efe79f6d69ae9F771E5FD8D9C7",
+    },
+    oas_hvmainnet: {
+      NANAKUSA_FACTORY: "0x8b20C458B75E016b333bD5bB61eEE7dcF8D97071",
+    },
     polygon: {
       NANAKUSA_FACTORY: "0x3791Ceb91c8bEA59d839E86f30E1158932C7B10d",
     },
