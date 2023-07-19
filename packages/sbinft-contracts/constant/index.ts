@@ -30,6 +30,16 @@ const GATEWAY_V1 = {
         SBINFTMultiCall: "0x326D42D8216B15BA4BFa4D51bd8b63EB12D3B8f3",
       },
     },
+    oas_tcgtest: {
+      Proxy: {
+        SBINFTForwarder: "0xA542854f5d79ABc52474443CB7942Ec0A14f60FC",
+        SBINFTMultiCall: "0xD12109d0F24DF2fbbbbc45A84b1eFc523f2A04ba",
+      },
+      Implementation: {
+        SBINFTForwarder: "0xE5c4224f7AEb85C3c0c2BDa02286bf8d5A83BC22",
+        SBINFTMultiCall: "0xde82B414417Db4836c6f7BDff58d9771C179664A",
+      },
+    },
     oas_hvmainnet: {
       Proxy: {
         SBINFTForwarder: "0x21772C6a9af37EE79a855c0b5A1d93B5643eC761",
@@ -38,6 +48,16 @@ const GATEWAY_V1 = {
       Implementation: {
         SBINFTForwarder: "0xE5c4224f7AEb85C3c0c2BDa02286bf8d5A83BC22",
         SBINFTMultiCall: "0x80b300c5a3424A21153f7dcd4492474B8b0a8151",
+      },
+    },
+    oas_tcgmainnet: {
+      Proxy: {
+        SBINFTForwarder: "0xF94Eb74447C1Ccb9Bc10B0626c581a4dBD342a7C",
+        SBINFTMultiCall: "0xAe6D415B807c3FbB85eb78CAbdCdCaa5EB37bEEF",
+      },
+      Implementation: {
+        SBINFTForwarder: "0x8e3e0428016B8fD67D92597B546FF455b89eF3E8",
+        SBINFTMultiCall: "0x9651555d3C882D52657C9399c79De6e212aBee3d",
       },
     },
     polygon: {
@@ -129,6 +149,20 @@ const MARKET_V1 = {
         PlatformRegistry: "0x60449a3135FCcfD234951a0253068FD0312C7e55",
       },
     },
+    oas_tcgtest: {
+      Proxy: {
+        Exchange: "0x1994249203b48126A17b3F0d750d3D98a73fd4a8",
+        RoyaltyRegistry: "0x46cedcCa9A05a4C9dE5e881FAc273Fc981BdD20e",
+        TransferProxy: "0xd2e83Cdc9bE3ab2A02A2997f539b8b0c4417c8Cb",
+        PlatformRegistry: "0xF394c57283a64435EdEc10cbF3f3D6a1Fd3Ca512",
+      },
+      Implementation: {
+        Exchange: "0xfA48005729729a618f9b2071F894998f4F3F505B",
+        RoyaltyRegistry: "0xA69929Fef1F55c4E80322F7b8bA632c5088F8a33",
+        TransferProxy: "0x23911bcc4fC800D267dd2e422CB298542CeF756C",
+        PlatformRegistry: "0x0340002E99BF9B4a7fC53279A9AbfeA716cEBD2a",
+      },
+    },
     oas_hvmainnet: {
       Proxy: {
         Exchange: "0x26B07AD16cBFb652eD6611087EC9F45b8E16Ace3",
@@ -141,6 +175,20 @@ const MARKET_V1 = {
         RoyaltyRegistry: "0xa85Bdf75e633717Cb310bd9beF1b15257d47A1bc",
         TransferProxy: "0x52B6E5a01213414952e72B96039D7FF5637598Ea",
         PlatformRegistry: "0xEa8220431F7E3e430447BdF049B76a6eC0Add2AD",
+      },
+    },
+    oas_tcgmainnet: {
+      Proxy: {
+        Exchange: "0xa4Ef0aAc6BD6c07265433f82D3EABee7D1960496",
+        RoyaltyRegistry: "0x2f406E71Ff5Ca146A4B775C01211C745A4430d1a",
+        TransferProxy: "0xF020219090d4563D094fCd254D35b5C51bE5BBfC",
+        PlatformRegistry: "0x3CEA44C54ca034cFa5843fE66A0E12f089198cEb",
+      },
+      Implementation: {
+        Exchange: "0x1041C4621F9896E39362E05bCB55500441F5649b",
+        RoyaltyRegistry: "0xA86499c81Ef14A0b53b3b85CaA2A830a54C99dBE",
+        TransferProxy: "0xF5E84FFf11D1698eE607B318019EE3428B15Cf43",
+        PlatformRegistry: "0x67e280Bf69D65B8c593be77B17AdE52F850CFDa7",
       },
     },
     polygon: {
@@ -248,8 +296,14 @@ const COLLECTION = {
     oas_hvtest: {
       NANAKUSA_FACTORY: "0xa103395bBe7c38Efe79f6d69ae9F771E5FD8D9C7",
     },
+    oas_tcgtest: {
+      NANAKUSA_FACTORY: "0xe500B6E9a5CDf1Ebb4207e664F1B1C353Db0c4ff",
+    },
     oas_hvmainnet: {
       NANAKUSA_FACTORY: "0x8b20C458B75E016b333bD5bB61eEE7dcF8D97071",
+    },
+    oas_tcgmainnet: {
+      NANAKUSA_FACTORY: "0xBf7DE96481A27C289Ad5D6Ef526A2af012B59079",
     },
     polygon: {
       NANAKUSA_FACTORY: "0x3791Ceb91c8bEA59d839E86f30E1158932C7B10d",
