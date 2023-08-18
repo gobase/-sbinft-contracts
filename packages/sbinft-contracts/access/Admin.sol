@@ -3,6 +3,12 @@ pragma solidity ^0.8.0;
 
 import "@openzeppelin/contracts/utils/Context.sol";
 
+/**
+ * @notice deprecated use AdminV2
+ * @title Admin Contract to manage access
+ *
+ * @author SBINFT Co., Ltd.
+ */
 abstract contract Admin is Context {
   event AdminAdded(address);
   event AdminRemoved(address);

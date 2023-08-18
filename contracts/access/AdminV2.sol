@@ -1,22 +1,26 @@
 //SPDX-License-Identifier: MIT
-pragma solidity ^0.8.0;
+pragma solidity ^0.8.20;
 
 import "@openzeppelin/contracts/utils/Context.sol";
 
 /**
- * @notice deprecated use AdminV2
- * @title Admin Contract to manage access
+ * @title Admin 2.0 with additional features
+ * - Enumerable admin list using function getAdminList()
+ * - Can't remove the last admin
+ * - Can't add already added admin
  *
  * @author SBINFT Co., Ltd.
  */
-abstract contract Admin is Context {
+abstract contract AdminV2 is Context {
   event AdminAdded(address);
   event AdminRemoved(address);
 
   /**
    * @dev 管理者のマッピング。管理者でないならばfalseを返す。
    */
-  mapping(address => bool) private _admin;
+  mapping(address => bool) internal _admin;
+  // List of Admins to be able to be enumerable
+  address[] internal _adminList;
 
   /**
    * @dev デプロイ時にデプロイ者を管理者に追加する。
@@ -27,6 +31,7 @@ abstract contract Admin is Context {
 
   /**
    * @dev 管理者を複数追加
+   * @notice deprecated use addAdminBatch() function instead
    */
   function addAdmin(address[] calldata newAdmin) public virtual onlyAdmin {
     for (uint256 idx = 0; idx < newAdmin.length; idx++) {
@@ -35,10 +40,12 @@ abstract contract Admin is Context {
   }
 
   /**
-   * @dev 管理者を一人追加
+   * @dev 管理者を複数追加
    */
-  function addAdmin(address newAdmin) public virtual onlyAdmin {
-    _addAdmin(newAdmin);
+  function addAdminBatch(address[] calldata newAdmin) public virtual onlyAdmin {
+    for (uint256 idx = 0; idx < newAdmin.length; idx++) {
+      _addAdmin(newAdmin[idx]);
+    }
   }
 
   /**
@@ -50,8 +57,14 @@ abstract contract Admin is Context {
       newAdmin != address(0),
       "Admin:addAdmin newAdmin is the zero address"
     );
+    require(
+      isAdmin(newAdmin) == false,
+      "Admin:addAdmin newAdmin is already an admin"
+    );
 
     _admin[newAdmin] = true;
+    _adminList.push(newAdmin);
+
     emit AdminAdded(newAdmin);
   }
 
@@ -72,7 +85,28 @@ abstract contract Admin is Context {
    * 無制限 Internal function
    */
   function _removeAdmin(address admin) internal virtual {
+    require(
+      _adminList.length > 1,
+      "Admin:_removeAdmin can't remove last admin"
+    );
+
     delete _admin[admin];
+
+    // Find index to delete
+    uint256 indexToDelete;
+    for (uint256 idx = 0; idx < _adminList.length; idx++) {
+      if (_adminList[idx] == admin) {
+        indexToDelete = idx;
+        break;
+      }
+    }
+
+    // Swap last item to the index where item to be removed
+    _adminList[indexToDelete] = _adminList[_adminList.length - 1];
+
+    // pop the last index to fix length of array
+    _adminList.pop();
+
     emit AdminRemoved(admin);
   }
 
@@ -82,6 +116,13 @@ abstract contract Admin is Context {
    */
   function isAdmin(address checkAdmin) public view virtual returns (bool) {
     return _admin[checkAdmin];
+  }
+
+  /**
+   * @dev Returns list of Admins
+   */
+  function getAdminList() external view virtual returns (address[] memory) {
+    return _adminList;
   }
 
   /**
