@@ -3,6 +3,12 @@ pragma solidity ^0.8.0;
 
 import "@openzeppelin/contracts-upgradeable/utils/ContextUpgradeable.sol";
 
+/**
+ * @notice deprecated use AdminUpgradeableV2
+ * @title AdminUpgradeable Contract to manage access
+ *
+ * @author SBINFT Co., Ltd.
+ */
 abstract contract AdminUpgradeable is ContextUpgradeable {
   event AdminAdded(address);
   event AdminRemoved(address);
