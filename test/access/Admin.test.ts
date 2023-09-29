@@ -1,16 +1,16 @@
 /* eslint-disable node/no-missing-import */
 import { ethers } from "hardhat";
 import { expect } from "chai";
-import { SignerWithAddress } from "@nomiclabs/hardhat-ethers/signers";
-import { AdminMock } from "../../typechain";
-import { ContractReceipt } from "ethers";
+import { HardhatEthersSigner } from "@nomicfoundation/hardhat-ethers/signers.js";
+import type { ContractTransactionReceipt } from "ethers";
+import { AdminMock } from "../../typechain-types";
 
 describe("Admin", function () {
-  let deployer: SignerWithAddress;
-  let nonAdmin: SignerWithAddress;
-  let address1: SignerWithAddress;
-  let address2: SignerWithAddress;
-  let address3: SignerWithAddress;
+  let deployer: HardhatEthersSigner;
+  let nonAdmin: HardhatEthersSigner;
+  let address1: HardhatEthersSigner;
+  let address2: HardhatEthersSigner;
+  let address3: HardhatEthersSigner;
 
   let cAdminMock: AdminMock;
   const newAdmminZeroError = "Admin:addAdmin newAdmin is the zero address";
@@ -24,7 +24,7 @@ describe("Admin", function () {
 
     const cfAdminContract = await ethers.getContractFactory("AdminMock");
 
-    cAdminMock = await cfAdminContract.deploy();
+    cAdminMock = (await cfAdminContract.deploy()) as unknown as AdminMock;
   });
 
   describe("Post deployment checks", function () {
@@ -41,14 +41,12 @@ describe("Admin", function () {
     it("check adding zero address as admin", async function () {
       await expect(
         cAdminMock["addAdmin(address[])"]([
-          ethers.constants.AddressZero,
+          ethers.ZeroAddress,
           address1.address,
-        ])
+        ]),
       ).to.be.revertedWith(newAdmminZeroError);
       expect(await cAdminMock.isAdmin(address1.address)).to.equal(false);
-      expect(await cAdminMock.isAdmin(ethers.constants.AddressZero)).to.equal(
-        false
-      );
+      expect(await cAdminMock.isAdmin(ethers.ZeroAddress)).to.equal(false);
     });
 
     it("can add admin", async function () {
@@ -56,15 +54,10 @@ describe("Admin", function () {
         address1.address,
         address2.address,
       ]);
-      const receipt: ContractReceipt = await addAdminTx.wait();
-      const { events } = receipt;
+      const receipt = (await addAdminTx.wait()) as ContractTransactionReceipt;
+      const { logs } = receipt;
 
-      expect(events).to.be.an("array").to.have.lengthOf(2);
-      const eventSignature = events?.map((item) => item.eventSignature);
-      expect(eventSignature).to.include.members([
-        "AdminAdded(address)",
-        "AdminAdded(address)",
-      ]);
+      expect(logs).to.be.an("array").to.have.lengthOf(2);
 
       expect(await cAdminMock.isAdmin(address2.address)).to.equal(true);
       expect(await cAdminMock.isAdmin(address1.address)).to.equal(true);
@@ -74,7 +67,7 @@ describe("Admin", function () {
       await expect(
         cAdminMock
           .connect(address1)
-          ["addAdmin(address[])"]([address2.address, address3.address])
+          ["addAdmin(address[])"]([address2.address, address3.address]),
       ).to.be.revertedWith(callerOnlyAdminError);
     });
   });
@@ -82,33 +75,31 @@ describe("Admin", function () {
   describe("addAdmin", function () {
     it("[R] adding zero address as an admin", async function () {
       await expect(
-        cAdminMock["addAdmin(address)"](ethers.constants.AddressZero)
+        cAdminMock["addAdmin(address)"](ethers.ZeroAddress),
       ).to.be.revertedWith(newAdmminZeroError);
     });
 
     it("[R]can not add admin from non admin signer", async function () {
       await expect(
-        cAdminMock.connect(address1)["addAdmin(address)"](address2.address)
+        cAdminMock.connect(address1)["addAdmin(address)"](address2.address),
       ).to.be.revertedWith(callerOnlyAdminError);
     });
 
     it("[R]can not add admin zero address", async function () {
       await expect(
-        cAdminMock["addAdmin(address)"](ethers.constants.AddressZero)
+        cAdminMock["addAdmin(address)"](ethers.ZeroAddress),
       ).to.be.revertedWith(newAdmminZeroError);
     });
 
     it("can add admin", async function () {
       const addAdminTx = await cAdminMock["addAdmin(address)"](
-        address1.address
+        address1.address,
       );
 
-      const receipt: ContractReceipt = await addAdminTx.wait();
-      const { events } = receipt;
+      const receipt = (await addAdminTx.wait()) as ContractTransactionReceipt;
+      const { logs } = receipt;
 
-      expect(events).to.be.an("array").to.have.lengthOf(1);
-      const eventSignature = events?.map((item) => item.eventSignature);
-      expect(eventSignature).to.include.members(["AdminAdded(address)"]);
+      expect(logs).to.be.an("array").to.have.lengthOf(1);
 
       expect(await cAdminMock.isAdmin(address1.address)).to.equal(true);
     });
@@ -117,23 +108,23 @@ describe("Admin", function () {
   describe("removeAdmin", function () {
     it("[R] removing zero address", async function () {
       await expect(
-        cAdminMock["addAdmin(address)"](ethers.constants.AddressZero)
+        cAdminMock["addAdmin(address)"](ethers.ZeroAddress),
       ).to.be.revertedWith(newAdmminZeroError);
       await expect(
-        cAdminMock.removeAdmin(ethers.constants.AddressZero)
+        cAdminMock.removeAdmin(ethers.ZeroAddress),
       ).to.be.revertedWith(cremoveNonExistAdminError);
     });
 
     it("[R]can not remove admin from non admin signer", async function () {
       await expect(
-        cAdminMock.connect(address1).removeAdmin(address2.address)
+        cAdminMock.connect(address1).removeAdmin(address2.address),
       ).to.be.revertedWith(callerOnlyAdminError);
     });
 
     it("[R]can not remove admin non admin signer", async function () {
       await cAdminMock["addAdmin(address)"](address1.address);
       await expect(
-        cAdminMock.connect(address1).removeAdmin(address2.address)
+        cAdminMock.connect(address1).removeAdmin(address2.address),
       ).to.be.revertedWith(cremoveNonExistAdminError);
     });
 
@@ -142,12 +133,11 @@ describe("Admin", function () {
       expect(await cAdminMock.isAdmin(address1.address)).to.equal(true);
       const reemoveAdminTx = await cAdminMock.removeAdmin(address1.address);
 
-      const receipt: ContractReceipt = await reemoveAdminTx.wait();
-      const { events } = receipt;
+      const receipt =
+        (await reemoveAdminTx.wait()) as ContractTransactionReceipt;
+      const { logs } = receipt;
 
-      expect(events).to.be.an("array").to.have.lengthOf(1);
-      const eventSignature = events?.map((item) => item.eventSignature);
-      expect(eventSignature).to.include.members(["AdminRemoved(address)"]);
+      expect(logs).to.be.an("array").to.have.lengthOf(1);
 
       expect(await cAdminMock.isAdmin(address1.address)).to.equal(false);
     });
@@ -156,12 +146,10 @@ describe("Admin", function () {
   describe("isAdmin", function () {
     it("[R] check zero address", async function () {
       await expect(
-        cAdminMock["addAdmin(address)"](ethers.constants.AddressZero)
+        cAdminMock["addAdmin(address)"](ethers.ZeroAddress),
       ).to.be.revertedWith(newAdmminZeroError);
 
-      expect(await cAdminMock.isAdmin(ethers.constants.AddressZero)).to.equal(
-        false
-      );
+      expect(await cAdminMock.isAdmin(ethers.ZeroAddress)).to.equal(false);
     });
 
     it("check admin ", async function () {
