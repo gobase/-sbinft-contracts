@@ -381,6 +381,7 @@ coverage
 coverage.json
 
 typechain
+typechain-types
 
 # OpenZeppelin
 .openzeppelin/dev-*.json
