@@ -1,8 +1,9 @@
 import * as dotenv from "dotenv";
 
 import { HardhatUserConfig, task } from "hardhat/config";
-import "@nomiclabs/hardhat-etherscan";
-import "@nomiclabs/hardhat-waffle";
+import "@nomicfoundation/hardhat-toolbox";
+import "@nomicfoundation/hardhat-ethers";
+import "@nomicfoundation/hardhat-verify";
 import "@typechain/hardhat";
 import "hardhat-gas-reporter";
 import "solidity-coverage";
@@ -24,7 +25,10 @@ task("accounts", "Prints the list of accounts", async (taskArgs, hre) => {
 // Go to https://hardhat.org/config/ to learn more
 
 const config: HardhatUserConfig = {
-  solidity: "0.8.20",
+  solidity: "0.8.19",
+  typechain: {
+    target: "ethers-v6",
+  },
   networks: {
     ropsten: {
       url: process.env.ROPSTEN_URL || "",
@@ -51,12 +55,12 @@ const config: HardhatUserConfig = {
   },
   etherscan: {
     apiKey: {
-      mainnet: process.env.ETHERSCAN_API_KEY,
-      ropsten: process.env.ETHERSCAN_API_KEY,
-      rinkeby: process.env.ETHERSCAN_API_KEY,
+      mainnet: process.env.ETHERSCAN_API_KEY || "",
+      ropsten: process.env.ETHERSCAN_API_KEY || "",
+      rinkeby: process.env.ETHERSCAN_API_KEY || "",
       // polygon
-      polygon: process.env.POLYGONSCAN_API_KEY,
-      polygonMumbai: process.env.POLYGONSCAN_API_KEY,
+      polygon: process.env.POLYGONSCAN_API_KEY || "",
+      polygonMumbai: process.env.POLYGONSCAN_API_KEY || "",
     },
   },
 };
