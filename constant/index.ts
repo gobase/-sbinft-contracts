@@ -258,30 +258,6 @@ const MARKET_V1 = {
       { name: "validUntil", type: "uint256" },
     ],
   },
-  EXCHANGE_SALE_ORDER_SINGLE_TYPE: {
-    Asset: MARKET_V1_PAYMENT_TYPE,
-    Payment: MARKET_V1_PAYMENT_TYPE,
-    SaleOrderSingle: [
-      { name: "asset", type: "Asset" },
-      { name: "currentOwner", type: "address" },
-      { name: "paymentReceiver", type: "address" },
-      { name: "acceptedPayment", type: "Payment" },
-      { name: "pfSaleFeeRate", type: "uint16" },
-      { name: "start", type: "uint256" },
-      { name: "end", type: "uint256" },
-      { name: "nonce", type: "uint256" },
-    ],
-  },
-  EXCHANGE_BUY_ORDER_SINGLE_TYPE: {
-    BuyOrderSingle: [
-      { name: "saleNonce", type: "uint256" },
-      { name: "assetBuyValue", type: "uint256" },
-      { name: "buyPrice", type: "uint256" },
-      { name: "buyer", type: "address" },
-      { name: "payer", type: "address" },
-      { name: "validUntil", type: "uint256" },
-    ],
-  },
   ROYALTY_REGISTRY_NAME: "SBINFT RoyaltyRegistry",
   ROYALTY_REGISTRY_VERSION: "1.0",
   ROYALTY_INFO_TYPE: {
