@@ -1,7 +1,7 @@
 {
   "_format": "hh-sol-artifact-1",
-  "contractName": "Exchange",
-  "sourceName": "contracts/sbinft/market/v1/exchange/Exchange.sol",
+  "contractName": "ExchangeV2",
+  "sourceName": "contracts/sbinft/market/v2/exchange/ExchangeV2.sol",
   "abi": [
     {
       "inputs": [
@@ -13,6 +13,186 @@
       ],
       "stateMutability": "nonpayable",
       "type": "constructor"
+    },
+    {
+      "inputs": [],
+      "name": "E_CPFE_ABVALNM",
+      "type": "error"
+    },
+    {
+      "inputs": [],
+      "name": "E_CPFE_BIB",
+      "type": "error"
+    },
+    {
+      "inputs": [],
+      "name": "E_CPFE_BIP",
+      "type": "error"
+    },
+    {
+      "inputs": [],
+      "name": "E_CPFE_BIPM",
+      "type": "error"
+    },
+    {
+      "inputs": [],
+      "name": "E_CPFE_BOIP",
+      "type": "error"
+    },
+    {
+      "inputs": [],
+      "name": "E_CPFE_BPTNW",
+      "type": "error"
+    },
+    {
+      "inputs": [],
+      "name": "E_CPFE_CAABS",
+      "type": "error"
+    },
+    {
+      "inputs": [],
+      "name": "E_CPFE_EO",
+      "type": "error"
+    },
+    {
+      "inputs": [],
+      "name": "E_CPFE_IBS",
+      "type": "error"
+    },
+    {
+      "inputs": [],
+      "name": "E_CPFE_IPS",
+      "type": "error"
+    },
+    {
+      "inputs": [],
+      "name": "E_CPFE_ISS",
+      "type": "error"
+    },
+    {
+      "inputs": [],
+      "name": "E_CPFE_NEOS",
+      "type": "error"
+    },
+    {
+      "inputs": [],
+      "name": "E_CPFE_PMNM",
+      "type": "error"
+    },
+    {
+      "inputs": [],
+      "name": "E_CPFE_SAIO",
+      "type": "error"
+    },
+    {
+      "inputs": [],
+      "name": "E_CPFE_SAIT",
+      "type": "error"
+    },
+    {
+      "inputs": [],
+      "name": "E_CPFE_SAITI",
+      "type": "error"
+    },
+    {
+      "inputs": [],
+      "name": "E_CPFE_SAPMIP",
+      "type": "error"
+    },
+    {
+      "inputs": [],
+      "name": "E_CPFE_SAPMPM",
+      "type": "error"
+    },
+    {
+      "inputs": [],
+      "name": "E_CPFE_SBN",
+      "type": "error"
+    },
+    {
+      "inputs": [],
+      "name": "E_CPFE_SIAL",
+      "type": "error"
+    },
+    {
+      "inputs": [],
+      "name": "E_CPFE_SICO",
+      "type": "error"
+    },
+    {
+      "inputs": [],
+      "name": "E_CPFE_SIE",
+      "type": "error"
+    },
+    {
+      "inputs": [],
+      "name": "E_CPFE_SIN",
+      "type": "error"
+    },
+    {
+      "inputs": [],
+      "name": "E_CPFE_SIPR",
+      "type": "error"
+    },
+    {
+      "inputs": [],
+      "name": "E_CPFE_SIS",
+      "type": "error"
+    },
+    {
+      "inputs": [],
+      "name": "E_CPFE_SOLD",
+      "type": "error"
+    },
+    {
+      "inputs": [],
+      "name": "E_CPFE_SPFLTLL",
+      "type": "error"
+    },
+    {
+      "inputs": [],
+      "name": "E_CPFE_VMM",
+      "type": "error"
+    },
+    {
+      "inputs": [],
+      "name": "E_CPFE_VNC",
+      "type": "error"
+    },
+    {
+      "inputs": [],
+      "name": "E_E_NEERC20",
+      "type": "error"
+    },
+    {
+      "inputs": [],
+      "name": "E_E_NENT",
+      "type": "error"
+    },
+    {
+      "inputs": [],
+      "name": "E_E_PFRNS",
+      "type": "error"
+    },
+    {
+      "inputs": [],
+      "name": "E_INS",
+      "type": "error"
+    },
+    {
+      "inputs": [],
+      "name": "E_OD2_IV",
+      "type": "error"
+    },
+    {
+      "inputs": [],
+      "name": "E_UAT",
+      "type": "error"
+    },
+    {
+      "inputs": [],
+      "name": "E_WT_IRA",
+      "type": "error"
     },
     {
       "anonymous": false,
@@ -89,19 +269,6 @@
       "anonymous": false,
       "inputs": [
         {
-          "indexed": true,
-          "internalType": "uint256",
-          "name": "nonce",
-          "type": "uint256"
-        }
-      ],
-      "name": "OrderCancelled",
-      "type": "event"
-    },
-    {
-      "anonymous": false,
-      "inputs": [
-        {
           "indexed": false,
           "internalType": "address",
           "name": "account",
@@ -155,6 +322,37 @@
       "inputs": [
         {
           "indexed": true,
+          "internalType": "uint256",
+          "name": "nonce",
+          "type": "uint256"
+        },
+        {
+          "indexed": true,
+          "internalType": "address",
+          "name": "token",
+          "type": "address"
+        },
+        {
+          "indexed": true,
+          "internalType": "uint256",
+          "name": "tokenId",
+          "type": "uint256"
+        },
+        {
+          "indexed": false,
+          "internalType": "uint256",
+          "name": "value",
+          "type": "uint256"
+        }
+      ],
+      "name": "SaleSingle",
+      "type": "event"
+    },
+    {
+      "anonymous": false,
+      "inputs": [
+        {
+          "indexed": true,
           "internalType": "contract ITransferProxy",
           "name": "transferProxy",
           "type": "address"
@@ -188,29 +386,6 @@
       ],
       "name": "Upgraded",
       "type": "event"
-    },
-    {
-      "inputs": [
-        {
-          "internalType": "contract IPlatformRegistry",
-          "name": "_platformRegistry",
-          "type": "address"
-        },
-        {
-          "internalType": "contract IRoyaltyRegistry",
-          "name": "_royaltyManager",
-          "type": "address"
-        },
-        {
-          "internalType": "contract ITransferProxy",
-          "name": "_transferProxy",
-          "type": "address"
-        }
-      ],
-      "name": "__Exchange_init",
-      "outputs": [],
-      "stateMutability": "nonpayable",
-      "type": "function"
     },
     {
       "inputs": [
@@ -260,9 +435,19 @@
                   "type": "uint256"
                 },
                 {
+                  "internalType": "uint256",
+                  "name": "value",
+                  "type": "uint256"
+                },
+                {
                   "internalType": "uint16",
                   "name": "partnerFeeRate",
                   "type": "uint16"
+                },
+                {
+                  "internalType": "address payable",
+                  "name": "partnerFeeReceiver",
+                  "type": "address"
                 },
                 {
                   "internalType": "uint8",
@@ -270,7 +455,7 @@
                   "type": "uint8"
                 }
               ],
-              "internalType": "struct OrderDomain.Asset[]",
+              "internalType": "struct OrderDomainV2.Asset[]",
               "name": "assetList",
               "type": "tuple[]"
             },
@@ -302,13 +487,18 @@
                   "type": "uint256"
                 }
               ],
-              "internalType": "struct OrderDomain.Payment[]",
+              "internalType": "struct OrderDomainV2.Payment[]",
               "name": "acceptedPaymentMode",
               "type": "tuple[]"
             },
             {
               "internalType": "uint16",
               "name": "pfSaleFeeRate",
+              "type": "uint16"
+            },
+            {
+              "internalType": "uint16",
+              "name": "pfSaleFeeRateSecondary",
               "type": "uint16"
             },
             {
@@ -325,118 +515,14 @@
               "internalType": "uint256",
               "name": "nonce",
               "type": "uint256"
+            },
+            {
+              "internalType": "uint8",
+              "name": "version",
+              "type": "uint8"
             }
           ],
-          "internalType": "struct OrderDomain.SaleOrder",
-          "name": "_saleOrder",
-          "type": "tuple"
-        },
-        {
-          "internalType": "bytes",
-          "name": "_salerSign",
-          "type": "bytes"
-        },
-        {
-          "internalType": "bytes",
-          "name": "_platformSign",
-          "type": "bytes"
-        }
-      ],
-      "name": "cancel",
-      "outputs": [],
-      "stateMutability": "nonpayable",
-      "type": "function"
-    },
-    {
-      "inputs": [
-        {
-          "components": [
-            {
-              "components": [
-                {
-                  "internalType": "bytes4",
-                  "name": "originKind",
-                  "type": "bytes4"
-                },
-                {
-                  "internalType": "address",
-                  "name": "token",
-                  "type": "address"
-                },
-                {
-                  "internalType": "uint256",
-                  "name": "tokenId",
-                  "type": "uint256"
-                },
-                {
-                  "internalType": "uint16",
-                  "name": "partnerFeeRate",
-                  "type": "uint16"
-                },
-                {
-                  "internalType": "uint8",
-                  "name": "isSecondarySale",
-                  "type": "uint8"
-                }
-              ],
-              "internalType": "struct OrderDomain.Asset[]",
-              "name": "assetList",
-              "type": "tuple[]"
-            },
-            {
-              "internalType": "address",
-              "name": "currentOwner",
-              "type": "address"
-            },
-            {
-              "internalType": "address",
-              "name": "paymentReceiver",
-              "type": "address"
-            },
-            {
-              "components": [
-                {
-                  "internalType": "bytes4",
-                  "name": "paymentMode",
-                  "type": "bytes4"
-                },
-                {
-                  "internalType": "address",
-                  "name": "paymentToken",
-                  "type": "address"
-                },
-                {
-                  "internalType": "uint256",
-                  "name": "price",
-                  "type": "uint256"
-                }
-              ],
-              "internalType": "struct OrderDomain.Payment[]",
-              "name": "acceptedPaymentMode",
-              "type": "tuple[]"
-            },
-            {
-              "internalType": "uint16",
-              "name": "pfSaleFeeRate",
-              "type": "uint16"
-            },
-            {
-              "internalType": "uint256",
-              "name": "start",
-              "type": "uint256"
-            },
-            {
-              "internalType": "uint256",
-              "name": "end",
-              "type": "uint256"
-            },
-            {
-              "internalType": "uint256",
-              "name": "nonce",
-              "type": "uint256"
-            }
-          ],
-          "internalType": "struct OrderDomain.SaleOrder",
+          "internalType": "struct OrderDomainV2.SaleOrder",
           "name": "_saleOrder",
           "type": "tuple"
         },
@@ -463,6 +549,11 @@
               "type": "address"
             },
             {
+              "internalType": "uint256",
+              "name": "firstAssetBuyValue",
+              "type": "uint256"
+            },
+            {
               "components": [
                 {
                   "internalType": "bytes4",
@@ -480,7 +571,7 @@
                   "type": "uint256"
                 }
               ],
-              "internalType": "struct OrderDomain.Payment",
+              "internalType": "struct OrderDomainV2.Payment",
               "name": "paymentDetails",
               "type": "tuple"
             },
@@ -488,9 +579,14 @@
               "internalType": "uint256",
               "name": "validUntil",
               "type": "uint256"
+            },
+            {
+              "internalType": "uint8",
+              "name": "version",
+              "type": "uint8"
             }
           ],
-          "internalType": "struct OrderDomain.BuyOrder",
+          "internalType": "struct OrderDomainV2.BuyOrder",
           "name": "_buyOrder",
           "type": "tuple"
         },
@@ -508,6 +604,54 @@
       "name": "exchange",
       "outputs": [],
       "stateMutability": "payable",
+      "type": "function"
+    },
+    {
+      "inputs": [
+        {
+          "internalType": "bytes32",
+          "name": "_saleKey",
+          "type": "bytes32"
+        }
+      ],
+      "name": "getSoldCountByKey",
+      "outputs": [
+        {
+          "internalType": "uint256",
+          "name": "",
+          "type": "uint256"
+        }
+      ],
+      "stateMutability": "view",
+      "type": "function"
+    },
+    {
+      "inputs": [
+        {
+          "internalType": "uint256",
+          "name": "_nonce",
+          "type": "uint256"
+        },
+        {
+          "internalType": "address",
+          "name": "_token",
+          "type": "address"
+        },
+        {
+          "internalType": "uint256",
+          "name": "_tokenId",
+          "type": "uint256"
+        }
+      ],
+      "name": "getSoldCountByNonce",
+      "outputs": [
+        {
+          "internalType": "uint256",
+          "name": "",
+          "type": "uint256"
+        }
+      ],
+      "stateMutability": "view",
       "type": "function"
     },
     {
@@ -727,6 +871,19 @@
       "name": "upgradeToAndCall",
       "outputs": [],
       "stateMutability": "payable",
+      "type": "function"
+    },
+    {
+      "inputs": [],
+      "name": "version",
+      "outputs": [
+        {
+          "internalType": "uint8",
+          "name": "",
+          "type": "uint8"
+        }
+      ],
+      "stateMutability": "pure",
       "type": "function"
     },
     {
