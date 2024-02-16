@@ -176,6 +176,17 @@ const MARKET_V1_ASSET_TYPE_V2 = [
   { name: "partnerFeeReceiver", type: "address" },
   { name: "isSecondarySale", type: "uint8" },
 ];
+const MARKET_V1_ASSET_TYPE_V3 = [
+  { name: "originKind", type: "bytes4" },
+  { name: "token", type: "address" },
+  { name: "tokenId", type: "uint256" },
+  { name: "value", type: "uint256" },
+  { name: "partnerFeeRate", type: "uint16" },
+  { name: "partnerFeeReceiver", type: "address" },
+  { name: "isSecondarySale", type: "uint8" },
+  { name: "royaltyReceivers", type: "address[]" },
+  { name: "royaltyReceiversCut", type: "uint256[]" },
+];
 const MARKET_V1 = {
   address: {
     goerli: {
@@ -412,6 +423,22 @@ const MARKET_V1 = {
       { name: "firstAssetBuyValue", type: "uint256" },
       { name: "paymentDetails", type: "Payment" },
       { name: "validUntil", type: "uint256" },
+      { name: "version", type: "uint8" },
+    ],
+  },
+  EXCHANGE_SALE_ORDER_TYPE_V3: {
+    Asset: MARKET_V1_ASSET_TYPE_V3,
+    Payment: MARKET_V1_PAYMENT_TYPE,
+    SaleOrder: [
+      { name: "assetList", type: "Asset[]" },
+      { name: "currentOwner", type: "address" },
+      { name: "paymentReceiver", type: "address" },
+      { name: "acceptedPaymentMode", type: "Payment[]" },
+      { name: "pfSaleFeeRate", type: "uint16" },
+      { name: "pfSaleFeeRateSecondary", type: "uint16" },
+      { name: "start", type: "uint256" },
+      { name: "end", type: "uint256" },
+      { name: "nonce", type: "uint256" },
       { name: "version", type: "uint8" },
     ],
   },
