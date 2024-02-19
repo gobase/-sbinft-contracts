@@ -176,6 +176,18 @@ const MARKET_V1_ASSET_TYPE_V2 = [
   { name: "partnerFeeReceiver", type: "address" },
   { name: "isSecondarySale", type: "uint8" },
 ];
+const MARKET_V1_EXCHANGE_BUY_ORDER_TYPE_V2 = {
+  Payment: MARKET_V1_PAYMENT_TYPE,
+  BuyOrder: [
+    { name: "saleNonce", type: "uint256" },
+    { name: "buyer", type: "address" },
+    { name: "payer", type: "address" },
+    { name: "firstAssetBuyValue", type: "uint256" },
+    { name: "paymentDetails", type: "Payment" },
+    { name: "validUntil", type: "uint256" },
+    { name: "version", type: "uint8" },
+  ],
+};
 const MARKET_V1_ASSET_TYPE_V3 = [
   { name: "originKind", type: "bytes4" },
   { name: "token", type: "address" },
@@ -414,18 +426,7 @@ const MARKET_V1 = {
       { name: "version", type: "uint8" },
     ],
   },
-  EXCHANGE_BUY_ORDER_TYPE_V2: {
-    Payment: MARKET_V1_PAYMENT_TYPE,
-    BuyOrder: [
-      { name: "saleNonce", type: "uint256" },
-      { name: "buyer", type: "address" },
-      { name: "payer", type: "address" },
-      { name: "firstAssetBuyValue", type: "uint256" },
-      { name: "paymentDetails", type: "Payment" },
-      { name: "validUntil", type: "uint256" },
-      { name: "version", type: "uint8" },
-    ],
-  },
+  EXCHANGE_BUY_ORDER_TYPE_V2: MARKET_V1_EXCHANGE_BUY_ORDER_TYPE_V2,
   EXCHANGE_SALE_ORDER_TYPE_V3: {
     Asset: MARKET_V1_ASSET_TYPE_V3,
     Payment: MARKET_V1_PAYMENT_TYPE,
@@ -442,6 +443,7 @@ const MARKET_V1 = {
       { name: "version", type: "uint8" },
     ],
   },
+  EXCHANGE_BUY_ORDER_TYPE_V3: MARKET_V1_EXCHANGE_BUY_ORDER_TYPE_V2,
   ROYALTY_REGISTRY_NAME: "SBINFT RoyaltyRegistry",
   ROYALTY_REGISTRY_VERSION: "1.0",
   ROYALTY_INFO_TYPE: {
