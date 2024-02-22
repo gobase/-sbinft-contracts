@@ -1,0 +1,722 @@
+{
+  "_format": "hh-sol-artifact-1",
+  "contractName": "ExchangeV3",
+  "sourceName": "contracts/sbinft/market/v3/exchange/ExchangeV3.sol",
+  "abi": [
+    {
+      "inputs": [
+        {
+          "internalType": "address",
+          "name": "trustedForwarder",
+          "type": "address"
+        }
+      ],
+      "stateMutability": "nonpayable",
+      "type": "constructor"
+    },
+    {
+      "anonymous": false,
+      "inputs": [
+        {
+          "indexed": false,
+          "internalType": "address",
+          "name": "",
+          "type": "address"
+        }
+      ],
+      "name": "AdminAdded",
+      "type": "event"
+    },
+    {
+      "anonymous": false,
+      "inputs": [
+        {
+          "indexed": false,
+          "internalType": "address",
+          "name": "previousAdmin",
+          "type": "address"
+        },
+        {
+          "indexed": false,
+          "internalType": "address",
+          "name": "newAdmin",
+          "type": "address"
+        }
+      ],
+      "name": "AdminChanged",
+      "type": "event"
+    },
+    {
+      "anonymous": false,
+      "inputs": [
+        {
+          "indexed": false,
+          "internalType": "address",
+          "name": "",
+          "type": "address"
+        }
+      ],
+      "name": "AdminRemoved",
+      "type": "event"
+    },
+    {
+      "anonymous": false,
+      "inputs": [
+        {
+          "indexed": true,
+          "internalType": "address",
+          "name": "beacon",
+          "type": "address"
+        }
+      ],
+      "name": "BeaconUpgraded",
+      "type": "event"
+    },
+    {
+      "anonymous": false,
+      "inputs": [
+        {
+          "indexed": false,
+          "internalType": "uint8",
+          "name": "version",
+          "type": "uint8"
+        }
+      ],
+      "name": "Initialized",
+      "type": "event"
+    },
+    {
+      "anonymous": false,
+      "inputs": [
+        {
+          "indexed": false,
+          "internalType": "address",
+          "name": "account",
+          "type": "address"
+        }
+      ],
+      "name": "Paused",
+      "type": "event"
+    },
+    {
+      "anonymous": false,
+      "inputs": [
+        {
+          "indexed": true,
+          "internalType": "contract IPlatformRegistry",
+          "name": "platformRegistry",
+          "type": "address"
+        }
+      ],
+      "name": "PlatformRegistryUpdated",
+      "type": "event"
+    },
+    {
+      "anonymous": false,
+      "inputs": [
+        {
+          "indexed": true,
+          "internalType": "contract IRoyaltyRegistry",
+          "name": "royaltyRegistry",
+          "type": "address"
+        }
+      ],
+      "name": "RoyaltyRegistryUpdated",
+      "type": "event"
+    },
+    {
+      "anonymous": false,
+      "inputs": [
+        {
+          "indexed": true,
+          "internalType": "uint256",
+          "name": "nonce",
+          "type": "uint256"
+        },
+        {
+          "indexed": true,
+          "internalType": "address",
+          "name": "token",
+          "type": "address"
+        },
+        {
+          "indexed": true,
+          "internalType": "uint256",
+          "name": "tokenId",
+          "type": "uint256"
+        },
+        {
+          "indexed": false,
+          "internalType": "uint256",
+          "name": "value",
+          "type": "uint256"
+        }
+      ],
+      "name": "SaleSingle",
+      "type": "event"
+    },
+    {
+      "anonymous": false,
+      "inputs": [
+        {
+          "indexed": true,
+          "internalType": "contract ITransferProxy",
+          "name": "transferProxy",
+          "type": "address"
+        }
+      ],
+      "name": "TransferProxyUpdated",
+      "type": "event"
+    },
+    {
+      "anonymous": false,
+      "inputs": [
+        {
+          "indexed": false,
+          "internalType": "address",
+          "name": "account",
+          "type": "address"
+        }
+      ],
+      "name": "Unpaused",
+      "type": "event"
+    },
+    {
+      "anonymous": false,
+      "inputs": [
+        {
+          "indexed": true,
+          "internalType": "address",
+          "name": "implementation",
+          "type": "address"
+        }
+      ],
+      "name": "Upgraded",
+      "type": "event"
+    },
+    {
+      "inputs": [
+        {
+          "internalType": "address[]",
+          "name": "newAdmin",
+          "type": "address[]"
+        }
+      ],
+      "name": "addAdmin",
+      "outputs": [],
+      "stateMutability": "nonpayable",
+      "type": "function"
+    },
+    {
+      "inputs": [
+        {
+          "internalType": "address",
+          "name": "newAdmin",
+          "type": "address"
+        }
+      ],
+      "name": "addAdmin",
+      "outputs": [],
+      "stateMutability": "nonpayable",
+      "type": "function"
+    },
+    {
+      "inputs": [
+        {
+          "components": [
+            {
+              "components": [
+                {
+                  "internalType": "bytes4",
+                  "name": "originKind",
+                  "type": "bytes4"
+                },
+                {
+                  "internalType": "address",
+                  "name": "token",
+                  "type": "address"
+                },
+                {
+                  "internalType": "uint256",
+                  "name": "tokenId",
+                  "type": "uint256"
+                },
+                {
+                  "internalType": "uint256",
+                  "name": "value",
+                  "type": "uint256"
+                },
+                {
+                  "internalType": "uint16",
+                  "name": "partnerFeeRate",
+                  "type": "uint16"
+                },
+                {
+                  "internalType": "address payable",
+                  "name": "partnerFeeReceiver",
+                  "type": "address"
+                },
+                {
+                  "internalType": "uint8",
+                  "name": "isSecondarySale",
+                  "type": "uint8"
+                },
+                {
+                  "internalType": "address[]",
+                  "name": "royaltyReceivers",
+                  "type": "address[]"
+                },
+                {
+                  "internalType": "uint256[]",
+                  "name": "royaltyReceiversCut",
+                  "type": "uint256[]"
+                }
+              ],
+              "internalType": "struct OrderDomainV3.Asset[]",
+              "name": "assetList",
+              "type": "tuple[]"
+            },
+            {
+              "internalType": "address",
+              "name": "currentOwner",
+              "type": "address"
+            },
+            {
+              "internalType": "address",
+              "name": "paymentReceiver",
+              "type": "address"
+            },
+            {
+              "components": [
+                {
+                  "internalType": "bytes4",
+                  "name": "paymentMode",
+                  "type": "bytes4"
+                },
+                {
+                  "internalType": "address",
+                  "name": "paymentToken",
+                  "type": "address"
+                },
+                {
+                  "internalType": "uint256",
+                  "name": "price",
+                  "type": "uint256"
+                }
+              ],
+              "internalType": "struct OrderDomainV3.Payment[]",
+              "name": "acceptedPaymentMode",
+              "type": "tuple[]"
+            },
+            {
+              "internalType": "uint16",
+              "name": "pfSaleFeeRate",
+              "type": "uint16"
+            },
+            {
+              "internalType": "uint16",
+              "name": "pfSaleFeeRateSecondary",
+              "type": "uint16"
+            },
+            {
+              "internalType": "uint256",
+              "name": "start",
+              "type": "uint256"
+            },
+            {
+              "internalType": "uint256",
+              "name": "end",
+              "type": "uint256"
+            },
+            {
+              "internalType": "uint256",
+              "name": "nonce",
+              "type": "uint256"
+            },
+            {
+              "internalType": "uint8",
+              "name": "version",
+              "type": "uint8"
+            }
+          ],
+          "internalType": "struct OrderDomainV3.SaleOrder",
+          "name": "_saleOrder",
+          "type": "tuple"
+        },
+        {
+          "internalType": "bytes",
+          "name": "_salerSign",
+          "type": "bytes"
+        },
+        {
+          "components": [
+            {
+              "internalType": "uint256",
+              "name": "saleNonce",
+              "type": "uint256"
+            },
+            {
+              "internalType": "address payable",
+              "name": "buyer",
+              "type": "address"
+            },
+            {
+              "internalType": "address payable",
+              "name": "payer",
+              "type": "address"
+            },
+            {
+              "internalType": "uint256",
+              "name": "firstAssetBuyValue",
+              "type": "uint256"
+            },
+            {
+              "components": [
+                {
+                  "internalType": "bytes4",
+                  "name": "paymentMode",
+                  "type": "bytes4"
+                },
+                {
+                  "internalType": "address",
+                  "name": "paymentToken",
+                  "type": "address"
+                },
+                {
+                  "internalType": "uint256",
+                  "name": "price",
+                  "type": "uint256"
+                }
+              ],
+              "internalType": "struct OrderDomainV3.Payment",
+              "name": "paymentDetails",
+              "type": "tuple"
+            },
+            {
+              "internalType": "uint256",
+              "name": "validUntil",
+              "type": "uint256"
+            },
+            {
+              "internalType": "uint8",
+              "name": "version",
+              "type": "uint8"
+            }
+          ],
+          "internalType": "struct OrderDomainV3.BuyOrder",
+          "name": "_buyOrder",
+          "type": "tuple"
+        },
+        {
+          "internalType": "bytes",
+          "name": "_platformSign",
+          "type": "bytes"
+        }
+      ],
+      "name": "exchange",
+      "outputs": [],
+      "stateMutability": "payable",
+      "type": "function"
+    },
+    {
+      "inputs": [
+        {
+          "internalType": "bytes32",
+          "name": "_saleKey",
+          "type": "bytes32"
+        }
+      ],
+      "name": "getSoldCountByKey",
+      "outputs": [
+        {
+          "internalType": "uint256",
+          "name": "",
+          "type": "uint256"
+        }
+      ],
+      "stateMutability": "view",
+      "type": "function"
+    },
+    {
+      "inputs": [
+        {
+          "internalType": "uint256",
+          "name": "_nonce",
+          "type": "uint256"
+        },
+        {
+          "internalType": "address",
+          "name": "_token",
+          "type": "address"
+        },
+        {
+          "internalType": "uint256",
+          "name": "_tokenId",
+          "type": "uint256"
+        }
+      ],
+      "name": "getSoldCountByNonce",
+      "outputs": [
+        {
+          "internalType": "uint256",
+          "name": "",
+          "type": "uint256"
+        }
+      ],
+      "stateMutability": "view",
+      "type": "function"
+    },
+    {
+      "inputs": [
+        {
+          "internalType": "address",
+          "name": "checkAdmin",
+          "type": "address"
+        }
+      ],
+      "name": "isAdmin",
+      "outputs": [
+        {
+          "internalType": "bool",
+          "name": "",
+          "type": "bool"
+        }
+      ],
+      "stateMutability": "view",
+      "type": "function"
+    },
+    {
+      "inputs": [
+        {
+          "internalType": "address",
+          "name": "forwarder",
+          "type": "address"
+        }
+      ],
+      "name": "isTrustedForwarder",
+      "outputs": [
+        {
+          "internalType": "bool",
+          "name": "",
+          "type": "bool"
+        }
+      ],
+      "stateMutability": "view",
+      "type": "function"
+    },
+    {
+      "inputs": [],
+      "name": "pause",
+      "outputs": [],
+      "stateMutability": "nonpayable",
+      "type": "function"
+    },
+    {
+      "inputs": [],
+      "name": "paused",
+      "outputs": [
+        {
+          "internalType": "bool",
+          "name": "",
+          "type": "bool"
+        }
+      ],
+      "stateMutability": "view",
+      "type": "function"
+    },
+    {
+      "inputs": [],
+      "name": "platformRegistry",
+      "outputs": [
+        {
+          "internalType": "contract IPlatformRegistry",
+          "name": "",
+          "type": "address"
+        }
+      ],
+      "stateMutability": "view",
+      "type": "function"
+    },
+    {
+      "inputs": [],
+      "name": "proxiableUUID",
+      "outputs": [
+        {
+          "internalType": "bytes32",
+          "name": "",
+          "type": "bytes32"
+        }
+      ],
+      "stateMutability": "view",
+      "type": "function"
+    },
+    {
+      "inputs": [
+        {
+          "internalType": "address",
+          "name": "admin",
+          "type": "address"
+        }
+      ],
+      "name": "removeAdmin",
+      "outputs": [],
+      "stateMutability": "nonpayable",
+      "type": "function"
+    },
+    {
+      "inputs": [],
+      "name": "royaltyRegistry",
+      "outputs": [
+        {
+          "internalType": "contract IRoyaltyRegistry",
+          "name": "",
+          "type": "address"
+        }
+      ],
+      "stateMutability": "view",
+      "type": "function"
+    },
+    {
+      "inputs": [
+        {
+          "internalType": "bytes4",
+          "name": "_interfaceId",
+          "type": "bytes4"
+        }
+      ],
+      "name": "supportsInterface",
+      "outputs": [
+        {
+          "internalType": "bool",
+          "name": "",
+          "type": "bool"
+        }
+      ],
+      "stateMutability": "view",
+      "type": "function"
+    },
+    {
+      "inputs": [],
+      "name": "transferProxy",
+      "outputs": [
+        {
+          "internalType": "contract ITransferProxy",
+          "name": "",
+          "type": "address"
+        }
+      ],
+      "stateMutability": "view",
+      "type": "function"
+    },
+    {
+      "inputs": [],
+      "name": "unpause",
+      "outputs": [],
+      "stateMutability": "nonpayable",
+      "type": "function"
+    },
+    {
+      "inputs": [
+        {
+          "internalType": "contract IPlatformRegistry",
+          "name": "_newPlatformRegistry",
+          "type": "address"
+        }
+      ],
+      "name": "updatePlatformRegistry",
+      "outputs": [],
+      "stateMutability": "nonpayable",
+      "type": "function"
+    },
+    {
+      "inputs": [
+        {
+          "internalType": "contract IRoyaltyRegistry",
+          "name": "_newRoyaltyRegistry",
+          "type": "address"
+        }
+      ],
+      "name": "updateRoyaltyRegistry",
+      "outputs": [],
+      "stateMutability": "nonpayable",
+      "type": "function"
+    },
+    {
+      "inputs": [
+        {
+          "internalType": "contract ITransferProxy",
+          "name": "_newTransferProxy",
+          "type": "address"
+        }
+      ],
+      "name": "updateTransferProxy",
+      "outputs": [],
+      "stateMutability": "nonpayable",
+      "type": "function"
+    },
+    {
+      "inputs": [
+        {
+          "internalType": "address",
+          "name": "newImplementation",
+          "type": "address"
+        }
+      ],
+      "name": "upgradeTo",
+      "outputs": [],
+      "stateMutability": "nonpayable",
+      "type": "function"
+    },
+    {
+      "inputs": [
+        {
+          "internalType": "address",
+          "name": "newImplementation",
+          "type": "address"
+        },
+        {
+          "internalType": "bytes",
+          "name": "data",
+          "type": "bytes"
+        }
+      ],
+      "name": "upgradeToAndCall",
+      "outputs": [],
+      "stateMutability": "payable",
+      "type": "function"
+    },
+    {
+      "inputs": [],
+      "name": "version",
+      "outputs": [
+        {
+          "internalType": "uint8",
+          "name": "",
+          "type": "uint8"
+        }
+      ],
+      "stateMutability": "pure",
+      "type": "function"
+    },
+    {
+      "inputs": [
+        {
+          "internalType": "address payable",
+          "name": "_receiver",
+          "type": "address"
+        },
+        {
+          "internalType": "address",
+          "name": "_erc20Token",
+          "type": "address"
+        }
+      ],
+      "name": "withdrawTip",
+      "outputs": [],
+      "stateMutability": "nonpayable",
+      "type": "function"
+    }
+  ],
+  "linkReferences": {},
+  "deployedLinkReferences": {}
+}
