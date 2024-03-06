@@ -157,7 +157,8 @@ const MARKET_V1_ASSET_TYPE_V3 = [
   { name: "partnerFeeReceiver", type: "address" },
   { name: "isSecondarySale", type: "uint8" },
   { name: "royaltyReceivers", type: "address[]" },
-  { name: "royaltyReceiversCut", type: "uint256[]" },
+  { name: "royaltyDistributionRate", type: "uint16[]" },
+  { name: "secondaryOnwardsRoyaltyPercentage", type: "uint16" },
 ];
 const MARKET_V1 = {
   address: {

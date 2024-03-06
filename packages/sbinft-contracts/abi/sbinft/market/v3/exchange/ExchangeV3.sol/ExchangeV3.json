@@ -267,9 +267,14 @@
                   "type": "address[]"
                 },
                 {
-                  "internalType": "uint256[]",
-                  "name": "royaltyReceiversCut",
-                  "type": "uint256[]"
+                  "internalType": "uint16[]",
+                  "name": "royaltyDistributionRate",
+                  "type": "uint16[]"
+                },
+                {
+                  "internalType": "uint16",
+                  "name": "secondaryOnwardsRoyaltyPercentage",
+                  "type": "uint16"
                 }
               ],
               "internalType": "struct OrderDomainV3.Asset[]",
