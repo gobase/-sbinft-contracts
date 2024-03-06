@@ -78,6 +78,18 @@ const GATEWAY_V1 = {
         SBINFTMultiCall: "0xB5ebEA1214BDb6488AF948d230a89b5EE90170d6",
       },
     },
+    oas_dm2test: {
+      Proxy: {
+        SBINFTForwarder: "0x307E7a9713dBf6f19a2d2a2b670544f4791c4eC2",
+        SBINFTMultiCall: "0x5832E3df2E83F060C417372a93758FE1C77E164D",
+      },
+    },
+    oas_dm2mainnet: {
+      Proxy: {
+        SBINFTForwarder: "0xF94Eb74447C1Ccb9Bc10B0626c581a4dBD342a7C",
+        SBINFTMultiCall: "0xAe6D415B807c3FbB85eb78CAbdCdCaa5EB37bEEF",
+      },
+    },
   },
   SBINFT_FORWARDER_CALL_CONTRACT_NAME: "SBINFTForwarder",
   SBINFT_FORWARDER_CONTRACT_VERSION: "1.0",
@@ -254,6 +266,22 @@ const MARKET_V1 = {
         PlatformRegistry: "0x07b942C119e544730Dd55F2Cb0Cbfad91859A3da",
       },
     },
+    oas_dm2test: {
+      Proxy: {
+        Exchange: "0xF4ADDB64881f8b235576897794933b91374CD33E",
+        RoyaltyRegistry: "0x047d47AC7C3212dd3ABB0E8Cf9639c4A76C48a96",
+        TransferProxy: "0x866ceaFF7778643926271f1DDe9e9c5F13d0243a",
+        PlatformRegistry: "0xE2ce61F588f75dC4CDD8Aa544fF903a3d4853749",
+      },
+    },
+    oas_dm2mainnet: {
+      Proxy: {
+        Exchange: "0xa4Ef0aAc6BD6c07265433f82D3EABee7D1960496",
+        RoyaltyRegistry: "0x2f406E71Ff5Ca146A4B775C01211C745A4430d1a",
+        TransferProxy: "0xF020219090d4563D094fCd254D35b5C51bE5BBfC",
+        PlatformRegistry: "0x3CEA44C54ca034cFa5843fE66A0E12f089198cEb",
+      },
+    },
   },
   EXCHANGE_CONTRACT_NAME: "SBINFT Exchange",
   EXCHANGE_CONTRACT_VERSION: "1.0",
@@ -363,6 +391,9 @@ const COLLECTION = {
     oas_bnvtest: {
       NANAKUSA_FACTORY: "0x6d4673320282e15B44f962E50426Fc522eFA49da",
     },
+    oas_dm2test: {
+      NANAKUSA_FACTORY: "0x77462878250e147876F272FFCb8fb1a48e793119",
+    },
     oas_hvmainnet: {
       NANAKUSA_FACTORY: "0x8b20C458B75E016b333bD5bB61eEE7dcF8D97071",
     },
@@ -374,6 +405,9 @@ const COLLECTION = {
     },
     oas_bnvmainnet: {
       NANAKUSA_FACTORY: "0x6F7C01fF32417EE797CE0AD2836DfB10328e71E2",
+    },
+    oas_dm2mainnet: {
+      NANAKUSA_FACTORY: "0x8Ba75B8A05354746cF24D9f3e6942bE9561E8AA7",
     },
     polygon: {
       NANAKUSA_FACTORY: "0x3791Ceb91c8bEA59d839E86f30E1158932C7B10d",
