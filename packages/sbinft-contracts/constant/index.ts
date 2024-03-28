@@ -90,6 +90,18 @@ const GATEWAY_V1 = {
         SBINFTMultiCall: "0xAe6D415B807c3FbB85eb78CAbdCdCaa5EB37bEEF",
       },
     },
+    oas_testnet: {
+      Proxy: {
+        SBINFTForwarder: "0x22fF92594Ee0EB70Cbffe673f55A9Dd7c4Dc8199",
+        SBINFTMultiCall: "0xa7D51E562662dDaF009cF3f340e5e096f2816A9b",
+      },
+    },
+    oas_mainnet: {
+      Proxy: {
+        SBINFTForwarder: "0x22fF92594Ee0EB70Cbffe673f55A9Dd7c4Dc8199",
+        SBINFTMultiCall: "0xa7D51E562662dDaF009cF3f340e5e096f2816A9b",
+      },
+    },
   },
   SBINFT_FORWARDER_CALL_CONTRACT_NAME: "SBINFTForwarder",
   SBINFT_FORWARDER_CONTRACT_VERSION: "1.0",
@@ -282,6 +294,22 @@ const MARKET_V1 = {
         PlatformRegistry: "0x3CEA44C54ca034cFa5843fE66A0E12f089198cEb",
       },
     },
+    oas_testnet: {
+      Proxy: {
+        Exchange: "0x5DCf64eD66153FB661A1Ec244749A884e02a1097",
+        RoyaltyRegistry: "0xC30b3Bc90255546a26C1090E8F55c00f63Dce39c",
+        TransferProxy: "0x259C865b8a212b4d7b0bBF75A99c547d66c08952",
+        PlatformRegistry: "0x02e0161E5b33f867f9ec3752C315281a3cde7fDE",
+      },
+    },
+    oas_mainnet: {
+      Proxy: {
+        Exchange: "0x5DCf64eD66153FB661A1Ec244749A884e02a1097",
+        RoyaltyRegistry: "0xC30b3Bc90255546a26C1090E8F55c00f63Dce39c",
+        TransferProxy: "0x259C865b8a212b4d7b0bBF75A99c547d66c08952",
+        PlatformRegistry: "0x02e0161E5b33f867f9ec3752C315281a3cde7fDE",
+      },
+    },
   },
   EXCHANGE_CONTRACT_NAME: "SBINFT Exchange",
   EXCHANGE_CONTRACT_VERSION: "1.0",
@@ -376,44 +404,50 @@ const COLLECTION = {
     sepolia: {
       NANAKUSA_FACTORY: "0xC5AE945CD812134765772e4cB328b9De739795da",
     },
+    mainnet: {
+      NANAKUSA_FACTORY: "0x4c1a91c6aa88d27dBAEf24D5FBD1cA1Ade5Bd6d7",
+    },
     mumbai: {
       NANAKUSA_FACTORY: "0x16895060eCd8C29E1a6625B02bF8425102B620e3",
-    },
-    oas_hvtest: {
-      NANAKUSA_FACTORY: "0xa103395bBe7c38Efe79f6d69ae9F771E5FD8D9C7",
-    },
-    oas_tcgtest: {
-      NANAKUSA_FACTORY: "0xe500B6E9a5CDf1Ebb4207e664F1B1C353Db0c4ff",
-    },
-    oas_mchtest: {
-      NANAKUSA_FACTORY: "0xf515Cc176DE3A9CD9d58FEcC4a70451E3601361D",
-    },
-    oas_bnvtest: {
-      NANAKUSA_FACTORY: "0x6d4673320282e15B44f962E50426Fc522eFA49da",
-    },
-    oas_dm2test: {
-      NANAKUSA_FACTORY: "0x77462878250e147876F272FFCb8fb1a48e793119",
-    },
-    oas_hvmainnet: {
-      NANAKUSA_FACTORY: "0x8b20C458B75E016b333bD5bB61eEE7dcF8D97071",
-    },
-    oas_tcgmainnet: {
-      NANAKUSA_FACTORY: "0xBf7DE96481A27C289Ad5D6Ef526A2af012B59079",
-    },
-    oas_mchmainnet: {
-      NANAKUSA_FACTORY: "0x4ed6532D849ed1A220A3676b33442c63347d81E8",
-    },
-    oas_bnvmainnet: {
-      NANAKUSA_FACTORY: "0x6F7C01fF32417EE797CE0AD2836DfB10328e71E2",
-    },
-    oas_dm2mainnet: {
-      NANAKUSA_FACTORY: "0x8Ba75B8A05354746cF24D9f3e6942bE9561E8AA7",
     },
     polygon: {
       NANAKUSA_FACTORY: "0x3791Ceb91c8bEA59d839E86f30E1158932C7B10d",
     },
-    mainnet: {
-      NANAKUSA_FACTORY: "0x4c1a91c6aa88d27dBAEf24D5FBD1cA1Ade5Bd6d7",
+    oas_hvtest: {
+      NANAKUSA_FACTORY: "0xa103395bBe7c38Efe79f6d69ae9F771E5FD8D9C7",
+    },
+    oas_hvmainnet: {
+      NANAKUSA_FACTORY: "0x8b20C458B75E016b333bD5bB61eEE7dcF8D97071",
+    },
+    oas_tcgtest: {
+      NANAKUSA_FACTORY: "0xe500B6E9a5CDf1Ebb4207e664F1B1C353Db0c4ff",
+    },
+    oas_tcgmainnet: {
+      NANAKUSA_FACTORY: "0xBf7DE96481A27C289Ad5D6Ef526A2af012B59079",
+    },
+    oas_mchtest: {
+      NANAKUSA_FACTORY: "0xf515Cc176DE3A9CD9d58FEcC4a70451E3601361D",
+    },
+    oas_mchmainnet: {
+      NANAKUSA_FACTORY: "0x4ed6532D849ed1A220A3676b33442c63347d81E8",
+    },
+    oas_bnvtest: {
+      NANAKUSA_FACTORY: "0x6d4673320282e15B44f962E50426Fc522eFA49da",
+    },
+    oas_bnvmainnet: {
+      NANAKUSA_FACTORY: "0x6F7C01fF32417EE797CE0AD2836DfB10328e71E2",
+    },
+    oas_dm2test: {
+      NANAKUSA_FACTORY: "0x77462878250e147876F272FFCb8fb1a48e793119",
+    },
+    oas_dm2mainnet: {
+      NANAKUSA_FACTORY: "0x8Ba75B8A05354746cF24D9f3e6942bE9561E8AA7",
+    },
+    oas_testnet: {
+      NANAKUSA_FACTORY: "0x0000000000000000000000000000000000000000",
+    },
+    oas_mainnet: {
+      NANAKUSA_FACTORY: "0x0000000000000000000000000000000000000000",
     },
   },
   NANAKUSA_FROM_FACTORY_CONTRACT_NAME: "SBINFT Nanakusa Factoy NFT",
