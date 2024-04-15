@@ -24,6 +24,12 @@ const GATEWAY_V1 = {
         SBINFTMultiCall: "0x9A544B6505e1a67A3CFF4e161Fc2998e2e15dc4d",
       },
     },
+    amoy: {
+      Proxy: {
+        SBINFTForwarder: "0x5832E3df2E83F060C417372a93758FE1C77E164D",
+        SBINFTMultiCall: "0x2ff3004bE5c788Fb2b2ECAC89c44773A3C06fF8a",
+      },
+    },
     polygon: {
       Proxy: {
         SBINFTForwarder: "0x944d1a6FC282f5F79054e17B829c59fbC50bE348",
@@ -204,6 +210,14 @@ const MARKET_V1 = {
         RoyaltyRegistry: "0xeA608dEf0a4bbA902caD9Fb0364e67Bead20e302",
         TransferProxy: "0x159bE038c1110313b030FE8a3f703AaBF0c3010e",
         PlatformRegistry: "0x3630a8ffC70012850B9350D3f32Ac9331cD03b30",
+      },
+    },
+    amoy: {
+      Proxy: {
+        Exchange: "0xBD8c6C61259CaFBa655551a39c408cFAAB7315da",
+        RoyaltyRegistry: "0xF4ADDB64881f8b235576897794933b91374CD33E",
+        TransferProxy: "0x46BeE94A14951a418b88aF425400278AEC0ff135",
+        PlatformRegistry: "0x0f2144a24DE4411D3Ade6ed94e17F6Ec14C7281F",
       },
     },
     polygon: {
@@ -409,6 +423,9 @@ const COLLECTION = {
     },
     mumbai: {
       NANAKUSA_FACTORY: "0x16895060eCd8C29E1a6625B02bF8425102B620e3",
+    },
+    amoy: {
+      NANAKUSA_FACTORY: "0xa3CCE113cB23D4d125Bd44E75D590b198b315513",
     },
     polygon: {
       NANAKUSA_FACTORY: "0x3791Ceb91c8bEA59d839E86f30E1158932C7B10d",
