@@ -238,10 +238,10 @@ const MARKET_V1 = {
     },
     oas_hvmainnet: {
       Proxy: {
-        Exchange: "0x2564C8Ac021Fa8cddf83C5e9e63A8edaf37c907d",
-        RoyaltyRegistry: "0xcaB65A1d8E655915D3F2630717FdeCb928c8f43d",
-        TransferProxy: "0xdE21B92841f9c78DcCEac194ee4B01609dDCa93c",
-        PlatformRegistry: "0x3FDb0BBac2912f3fb63a2A538f3B7945ce9A870F",
+        Exchange: "0x26B07AD16cBFb652eD6611087EC9F45b8E16Ace3",
+        RoyaltyRegistry: "0xE1d6412CD70A1Ff2185C59Fff2c92cFb745113Fb",
+        TransferProxy: "0x6B2f88c9f445e6Af816e7b144BF48FA9ec6EB72d",
+        PlatformRegistry: "0x63fe86B60271aca06b28a7F0D71A2C9Cf2C6A1DB",
       },
     },
     oas_tcgtest: {
