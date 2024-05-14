@@ -96,6 +96,18 @@ const GATEWAY_V1 = {
         SBINFTMultiCall: "0xAe6D415B807c3FbB85eb78CAbdCdCaa5EB37bEEF",
       },
     },
+    oas_gesotest: {
+      Proxy: {
+        SBINFTForwarder: "0x307E7a9713dBf6f19a2d2a2b670544f4791c4eC2",
+        SBINFTMultiCall: "0x5832E3df2E83F060C417372a93758FE1C77E164D",
+      },
+    },
+    oas_gesomainnet: {
+      Proxy: {
+        SBINFTForwarder: "0x2564C8Ac021Fa8cddf83C5e9e63A8edaf37c907d",
+        SBINFTMultiCall: "0x164b686350203888A8058c7c883dA1e1b047d145",
+      },
+    },
     oas_testnet: {
       Proxy: {
         SBINFTForwarder: "0x22fF92594Ee0EB70Cbffe673f55A9Dd7c4Dc8199",
@@ -308,6 +320,22 @@ const MARKET_V1 = {
         PlatformRegistry: "0x3CEA44C54ca034cFa5843fE66A0E12f089198cEb",
       },
     },
+    oas_gesotest: {
+      Proxy: {
+        Exchange: "0xF4ADDB64881f8b235576897794933b91374CD33E",
+        RoyaltyRegistry: "0x047d47AC7C3212dd3ABB0E8Cf9639c4A76C48a96",
+        TransferProxy: "0x866ceaFF7778643926271f1DDe9e9c5F13d0243a",
+        PlatformRegistry: "0xE2ce61F588f75dC4CDD8Aa544fF903a3d4853749",
+      },
+    },
+    oas_gesomainnet: {
+      Proxy: {
+        Exchange: "0xF09c7BAedB1D389ead6515f2b8Ee53084352ADff",
+        RoyaltyRegistry: "0xa6B8f8C34E86424674FAf648123e767Ac5b5C7DD",
+        TransferProxy: "0xd613B3749A969B6D1Fc0b182E2dAE8d30901375C",
+        PlatformRegistry: "0xBcBC9b9Fc75E8E32c5b8baFd9ed7f653378A7809",
+      },
+    },
     oas_testnet: {
       Proxy: {
         Exchange: "0x5DCf64eD66153FB661A1Ec244749A884e02a1097",
@@ -459,6 +487,12 @@ const COLLECTION = {
     },
     oas_dm2mainnet: {
       NANAKUSA_FACTORY: "0x8Ba75B8A05354746cF24D9f3e6942bE9561E8AA7",
+    },
+    oas_gesotest: {
+      NANAKUSA_FACTORY: "0x77462878250e147876F272FFCb8fb1a48e793119",
+    },
+    oas_gesomainnet: {
+      NANAKUSA_FACTORY: "0x07b942C119e544730Dd55F2Cb0Cbfad91859A3da",
     },
     oas_testnet: {
       NANAKUSA_FACTORY: "0x0000000000000000000000000000000000000000",
