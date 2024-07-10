@@ -413,6 +413,18 @@ const MARKET_V1 = {
     ],
   },
   EXCHANGE_BUY_ORDER_TYPE_V3: MARKET_V1_EXCHANGE_BUY_ORDER_TYPE_V2,
+  EXCHANGE_BUY_ORDER_BATCH_TYPE: {
+    Payment: MARKET_V1_PAYMENT_TYPE,
+    BuyOrderBatch: [
+      { name: "validUntil", type: "uint256" },
+      { name: "buyer", type: "address" },
+      { name: "payer", type: "address" },
+      { name: "paymentDetails", type: "Payment" },
+      { name: "saleNonceList", type: "uint256[]" },
+      { name: "firstAssetBuyValueList", type: "uint256[]" },
+      { name: "versionList", type: "uint8[]" },
+    ],
+  },
   ROYALTY_REGISTRY_NAME: "SBINFT RoyaltyRegistry",
   ROYALTY_REGISTRY_VERSION: "1.0",
   ROYALTY_INFO_TYPE: {
