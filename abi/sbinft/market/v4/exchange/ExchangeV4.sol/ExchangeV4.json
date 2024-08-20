@@ -344,6 +344,209 @@
               "type": "uint8"
             }
           ],
+          "internalType": "struct OrderDomainV4.SaleOrder",
+          "name": "_saleOrder",
+          "type": "tuple"
+        },
+        {
+          "internalType": "bytes",
+          "name": "_salerSign",
+          "type": "bytes"
+        },
+        {
+          "components": [
+            {
+              "internalType": "uint256",
+              "name": "saleNonce",
+              "type": "uint256"
+            },
+            {
+              "internalType": "address payable",
+              "name": "buyer",
+              "type": "address"
+            },
+            {
+              "internalType": "address payable",
+              "name": "payer",
+              "type": "address"
+            },
+            {
+              "internalType": "uint256",
+              "name": "firstAssetBuyValue",
+              "type": "uint256"
+            },
+            {
+              "components": [
+                {
+                  "internalType": "bytes4",
+                  "name": "paymentMode",
+                  "type": "bytes4"
+                },
+                {
+                  "internalType": "address",
+                  "name": "paymentToken",
+                  "type": "address"
+                },
+                {
+                  "internalType": "uint256",
+                  "name": "price",
+                  "type": "uint256"
+                }
+              ],
+              "internalType": "struct OrderDomainV4.Payment",
+              "name": "paymentDetails",
+              "type": "tuple"
+            },
+            {
+              "internalType": "uint256",
+              "name": "validUntil",
+              "type": "uint256"
+            },
+            {
+              "internalType": "uint8",
+              "name": "version",
+              "type": "uint8"
+            }
+          ],
+          "internalType": "struct OrderDomainV4.BuyOrder",
+          "name": "_buyOrder",
+          "type": "tuple"
+        },
+        {
+          "internalType": "bytes",
+          "name": "_platformSign",
+          "type": "bytes"
+        }
+      ],
+      "name": "exchange",
+      "outputs": [],
+      "stateMutability": "payable",
+      "type": "function"
+    },
+    {
+      "inputs": [
+        {
+          "components": [
+            {
+              "components": [
+                {
+                  "internalType": "bytes4",
+                  "name": "originKind",
+                  "type": "bytes4"
+                },
+                {
+                  "internalType": "address",
+                  "name": "token",
+                  "type": "address"
+                },
+                {
+                  "internalType": "uint256",
+                  "name": "tokenId",
+                  "type": "uint256"
+                },
+                {
+                  "internalType": "uint256",
+                  "name": "value",
+                  "type": "uint256"
+                },
+                {
+                  "internalType": "uint16",
+                  "name": "partnerFeeRate",
+                  "type": "uint16"
+                },
+                {
+                  "internalType": "address payable",
+                  "name": "partnerFeeReceiver",
+                  "type": "address"
+                },
+                {
+                  "internalType": "uint8",
+                  "name": "isSecondarySale",
+                  "type": "uint8"
+                },
+                {
+                  "internalType": "address[]",
+                  "name": "royaltyReceivers",
+                  "type": "address[]"
+                },
+                {
+                  "internalType": "uint16[]",
+                  "name": "royaltyDistributionRate",
+                  "type": "uint16[]"
+                },
+                {
+                  "internalType": "uint16",
+                  "name": "secondaryOnwardsRoyaltyPercentage",
+                  "type": "uint16"
+                }
+              ],
+              "internalType": "struct OrderDomainV4.Asset[]",
+              "name": "assetList",
+              "type": "tuple[]"
+            },
+            {
+              "internalType": "address",
+              "name": "currentOwner",
+              "type": "address"
+            },
+            {
+              "internalType": "address",
+              "name": "paymentReceiver",
+              "type": "address"
+            },
+            {
+              "components": [
+                {
+                  "internalType": "bytes4",
+                  "name": "paymentMode",
+                  "type": "bytes4"
+                },
+                {
+                  "internalType": "address",
+                  "name": "paymentToken",
+                  "type": "address"
+                },
+                {
+                  "internalType": "uint256",
+                  "name": "price",
+                  "type": "uint256"
+                }
+              ],
+              "internalType": "struct OrderDomainV4.Payment[]",
+              "name": "acceptedPaymentMode",
+              "type": "tuple[]"
+            },
+            {
+              "internalType": "uint16",
+              "name": "pfSaleFeeRate",
+              "type": "uint16"
+            },
+            {
+              "internalType": "uint16",
+              "name": "pfSaleFeeRateSecondary",
+              "type": "uint16"
+            },
+            {
+              "internalType": "uint256",
+              "name": "start",
+              "type": "uint256"
+            },
+            {
+              "internalType": "uint256",
+              "name": "end",
+              "type": "uint256"
+            },
+            {
+              "internalType": "uint256",
+              "name": "nonce",
+              "type": "uint256"
+            },
+            {
+              "internalType": "uint8",
+              "name": "version",
+              "type": "uint8"
+            }
+          ],
           "internalType": "struct OrderDomainV4.SaleOrder[]",
           "name": "_saleOrderList",
           "type": "tuple[]"
