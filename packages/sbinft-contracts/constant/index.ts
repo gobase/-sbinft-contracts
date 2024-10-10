@@ -114,6 +114,12 @@ const GATEWAY_V1 = {
         SBINFTMultiCall: "0x5832E3df2E83F060C417372a93758FE1C77E164D",
       },
     },
+    oas_sgvmainnet: {
+      Proxy: {
+        "SBINFTForwarder": "0xF94Eb74447C1Ccb9Bc10B0626c581a4dBD342a7C",
+        "SBINFTMultiCall": "0xAe6D415B807c3FbB85eb78CAbdCdCaa5EB37bEEF"
+      },
+    },    
     oas_testnet: {
       Proxy: {
         SBINFTForwarder: "0x22fF92594Ee0EB70Cbffe673f55A9Dd7c4Dc8199",
@@ -362,6 +368,14 @@ const MARKET_V1 = {
         PlatformRegistry: "0xE2ce61F588f75dC4CDD8Aa544fF903a3d4853749",
       },
     },
+    oas_sgvmainnet: {
+      Proxy: {
+        Exchange: '0xa4Ef0aAc6BD6c07265433f82D3EABee7D1960496',
+        RoyaltyRegistry: '0x2f406E71Ff5Ca146A4B775C01211C745A4430d1a',
+        TransferProxy: '0xF020219090d4563D094fCd254D35b5C51bE5BBfC',
+        PlatformRegistry: '0x3CEA44C54ca034cFa5843fE66A0E12f089198cEb'
+      },
+    },    
     oas_testnet: {
       Proxy: {
         Exchange: "0x5DCf64eD66153FB661A1Ec244749A884e02a1097",
@@ -569,6 +583,10 @@ const COLLECTION = {
     oas_sgvtest: {
       NANAKUSA_FACTORY: "0xBD8c6C61259CaFBa655551a39c408cFAAB7315da",
       NANAKUSA_ERC721_COLLECTION: "0x0000000000000000000000000000000000000000",
+    },
+    oas_sgvmainnet: {
+      NANAKUSA_FACTORY: "0xBf7DE96481A27C289Ad5D6Ef526A2af012B59079",
+      NANAKUSA_ERC721_COLLECTION: "0x3873A5BF624990dbfe85B5b947A442Cd8c036b87",
     },
     oas_testnet: {
       NANAKUSA_FACTORY: "0xE68D5436fC61F6b0Be7e36fFE6443ea124Af74D2",
