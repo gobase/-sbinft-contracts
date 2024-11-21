@@ -1,11 +1,5 @@
 const GATEWAY_V1 = {
   address: {
-    goerli: {
-      Proxy: {
-        SBINFTForwarder: "0x1E5BA945b166D72B3B87f6003BB8E8e2b6A7cEe6",
-        SBINFTMultiCall: "0xF02d5E61818dE883BF0dB12Cc63043fCB9B950ba",
-      },
-    },
     sepolia: {
       Proxy: {
         SBINFTForwarder: "0x6aAa044A6BbB3952bd6bBeec7cC482e64762bAFC",
@@ -16,12 +10,6 @@ const GATEWAY_V1 = {
       Proxy: {
         SBINFTForwarder: "0xCcB6a41b93A6C326A91652CA816bE6A9fAeAC1B9",
         SBINFTMultiCall: "0x77fb62b25D1EE9F28c35120ECE2b6e04942a435b",
-      },
-    },
-    mumbai: {
-      Proxy: {
-        SBINFTForwarder: "0xf33341Af610F70CF3847C9683c5c5A4b0207443a",
-        SBINFTMultiCall: "0x9A544B6505e1a67A3CFF4e161Fc2998e2e15dc4d",
       },
     },
     amoy: {
@@ -216,14 +204,6 @@ const MARKET_V1_ASSET_TYPE_V3 = [
 ];
 const MARKET_V1 = {
   address: {
-    goerli: {
-      Proxy: {
-        Exchange: "0x82F1bEfE4B33a0638227D5af8990798c11eE54D6",
-        RoyaltyRegistry: "0xB9693dCb846B1dBd2BEd4A2AA8Ee67aC1F4e2135",
-        TransferProxy: "0xf21a39443F02318F8dd55fcD1f28822886c04e6a",
-        PlatformRegistry: "0xA284CD5d0eE8FEEcBeC7558144200df434b7D99f",
-      },
-    },
     sepolia: {
       Proxy: {
         Exchange: "0xBD8c6C61259CaFBa655551a39c408cFAAB7315da",
@@ -238,14 +218,6 @@ const MARKET_V1 = {
         RoyaltyRegistry: "0x568c76da3427E234Fd9Da49444A16296Fa1f7184",
         TransferProxy: "0xa6B8f8C34E86424674FAf648123e767Ac5b5C7DD",
         PlatformRegistry: "0xd613B3749A969B6D1Fc0b182E2dAE8d30901375C",
-      },
-    },
-    mumbai: {
-      Proxy: {
-        Exchange: "0x698ef268F3525cDAA2e2143c0BE732bE02D45A4a",
-        RoyaltyRegistry: "0xeA608dEf0a4bbA902caD9Fb0364e67Bead20e302",
-        TransferProxy: "0x159bE038c1110313b030FE8a3f703AaBF0c3010e",
-        PlatformRegistry: "0x3630a8ffC70012850B9350D3f32Ac9331cD03b30",
       },
     },
     amoy: {
@@ -508,10 +480,6 @@ const MARKET_V1 = {
 
 const COLLECTION = {
   address: {
-    goerli: {
-      NANAKUSA_FACTORY: "0x72de008Bd205B1b8E7725a81596c6b2735bd2D25",
-      NANAKUSA_ERC721_COLLECTION: "0x17B8281e3a74D43BE2D24cD6D939D326787C8A9F",
-    },
     sepolia: {
       NANAKUSA_FACTORY: "0xC5AE945CD812134765772e4cB328b9De739795da",
       NANAKUSA_ERC721_COLLECTION: "0x90C40e55B77DD2DF6c791cE032113a10F20a13C0",
@@ -519,10 +487,6 @@ const COLLECTION = {
     mainnet: {
       NANAKUSA_FACTORY: "0x4c1a91c6aa88d27dBAEf24D5FBD1cA1Ade5Bd6d7",
       NANAKUSA_ERC721_COLLECTION: "0x66779f4615f287b4DB421b7910620E05daaE79B9",
-    },
-    mumbai: {
-      NANAKUSA_FACTORY: "0x16895060eCd8C29E1a6625B02bF8425102B620e3",
-      NANAKUSA_ERC721_COLLECTION: "0x87BD1b0AE8B88A409118D73894F3D9b7D13E4bd9",
     },
     amoy: {
       NANAKUSA_FACTORY: "0xa3CCE113cB23D4d125Bd44E75D590b198b315513",

@@ -30,21 +30,6 @@ const config: HardhatUserConfig = {
     target: "ethers-v6",
   },
   networks: {
-    ropsten: {
-      url: process.env.ROPSTEN_URL || "",
-      accounts:
-        process.env.PRIVATE_KEY !== undefined ? [process.env.PRIVATE_KEY] : [],
-    },
-    rinkeby: {
-      url: process.env.RINKEBY_URL || "",
-      accounts:
-        process.env.PRIVATE_KEY !== undefined ? [process.env.PRIVATE_KEY] : [],
-    },
-    mumbai: {
-      url: process.env.POLYGON_MUMBAI_URL || "",
-      accounts:
-        process.env.PRIVATE_KEY !== undefined ? [process.env.PRIVATE_KEY] : [],
-    },
   },
   gasReporter: {
     enabled: process.env.REPORT_GAS
@@ -56,11 +41,8 @@ const config: HardhatUserConfig = {
   etherscan: {
     apiKey: {
       mainnet: process.env.ETHERSCAN_API_KEY || "",
-      ropsten: process.env.ETHERSCAN_API_KEY || "",
-      rinkeby: process.env.ETHERSCAN_API_KEY || "",
       // polygon
       polygon: process.env.POLYGONSCAN_API_KEY || "",
-      polygonMumbai: process.env.POLYGONSCAN_API_KEY || "",
     },
   },
 };
