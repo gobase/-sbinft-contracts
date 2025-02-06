@@ -56,18 +56,18 @@ It contains address and data type definition for signing using EIP-712.
 | Ethereum Testnet (Sepolia)    | 11155111      |
 | Polygon Mainnet               | 137           |
 | Polygon Testnet (Amoy)        | 80002         |
+| Avalanche Mainnet             | 43114         |
+| Avalanche Testnet (Fuji)      | 43113         |
+| Oasys Hub L1 Mainnet          | 248           |
+| Oasys Hub L1 Testnet          | 9372          |
 | HOME Verse Mainnet            | 19011         |
 | HOME Verse Testnet            | 40875         |
 | TCG Verse Mainnet             | 2400          |
 | TCG Verse Testnet             | 12005         |
-| DM2 Verse Mainnet             | 68770         |
-| DM2 Verse Testnet             | 68775         |
-| Oasys Hub L1 Mainnet          | 248           |
-| Oasys Hub L1 Testnet          | 9372          |
 | MCH Verse Mainnet             | 29548         |
 | MCH Verse Testnet             | 420           |
-| BN Verse Mainnet              | 876           |
-| BN Verse Testnet              | 876001        |
+| GESO Verse Mainnet            | 428           |
+| GESO Verse Testnet            | 42801         |
 
 ### Its divided into:
 - GATEWAY_V1

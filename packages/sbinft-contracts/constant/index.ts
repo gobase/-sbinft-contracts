@@ -60,30 +60,6 @@ const GATEWAY_V1 = {
         SBINFTMultiCall: "0xd613B3749A969B6D1Fc0b182E2dAE8d30901375C",
       },
     },
-    oas_bnvtest: {
-      Proxy: {
-        SBINFTForwarder: "0x60c4573056542292368545139173A613Ef84DaD9",
-        SBINFTMultiCall: "0xD2eafF47eEa66BC1945296384de0E9BD69c333Ce",
-      },
-    },
-    oas_bnvmainnet: {
-      Proxy: {
-        SBINFTForwarder: "0x64f1DB9e431c13a6811B61AE7E3cEc266b766ff1",
-        SBINFTMultiCall: "0xB5ebEA1214BDb6488AF948d230a89b5EE90170d6",
-      },
-    },
-    oas_dm2test: {
-      Proxy: {
-        SBINFTForwarder: "0x307E7a9713dBf6f19a2d2a2b670544f4791c4eC2",
-        SBINFTMultiCall: "0x5832E3df2E83F060C417372a93758FE1C77E164D",
-      },
-    },
-    oas_dm2mainnet: {
-      Proxy: {
-        SBINFTForwarder: "0xF94Eb74447C1Ccb9Bc10B0626c581a4dBD342a7C",
-        SBINFTMultiCall: "0xAe6D415B807c3FbB85eb78CAbdCdCaa5EB37bEEF",
-      },
-    },
     oas_gesotest: {
       Proxy: {
         SBINFTForwarder: "0x307E7a9713dBf6f19a2d2a2b670544f4791c4eC2",
@@ -104,8 +80,8 @@ const GATEWAY_V1 = {
     },
     oas_sgvmainnet: {
       Proxy: {
-        "SBINFTForwarder": "0xF94Eb74447C1Ccb9Bc10B0626c581a4dBD342a7C",
-        "SBINFTMultiCall": "0xAe6D415B807c3FbB85eb78CAbdCdCaa5EB37bEEF"
+        SBINFTForwarder: "0xF94Eb74447C1Ccb9Bc10B0626c581a4dBD342a7C",
+        SBINFTMultiCall: "0xAe6D415B807c3FbB85eb78CAbdCdCaa5EB37bEEF",
       },
     },
     oas_testnet: {
@@ -284,38 +260,6 @@ const MARKET_V1 = {
         PlatformRegistry: "0xbdFa569eb51c0CA4fBF43A25B7f902fb8ADDd2B4",
       },
     },
-    oas_bnvtest: {
-      Proxy: {
-        Exchange: "0x5e5AC07Af8Fac3f7c42BAA506D7CcB194bAD4cE0",
-        RoyaltyRegistry: "0x949f96A6bB6F384De3A1E314FEdD8f73018cCBEe",
-        TransferProxy: "0x0Ec6d1B228411703B4137c2E4e9EF287596B3A26",
-        PlatformRegistry: "0x1dDebc783BeB44764dEe2bb16Ca17392655B1B3C",
-      },
-    },
-    oas_bnvmainnet: {
-      Proxy: {
-        Exchange: "0x709a45c98b1F63B122E712b664A5E4f0A8d4f8d3",
-        RoyaltyRegistry: "0xbAE2Fc679b4F9Dad24412da4796FB85bea2a9721",
-        TransferProxy: "0xD950cE58b6EdE6aE837DA0dF4f6a92181DCe4c44",
-        PlatformRegistry: "0x07b942C119e544730Dd55F2Cb0Cbfad91859A3da",
-      },
-    },
-    oas_dm2test: {
-      Proxy: {
-        Exchange: "0xF4ADDB64881f8b235576897794933b91374CD33E",
-        RoyaltyRegistry: "0x047d47AC7C3212dd3ABB0E8Cf9639c4A76C48a96",
-        TransferProxy: "0x866ceaFF7778643926271f1DDe9e9c5F13d0243a",
-        PlatformRegistry: "0xE2ce61F588f75dC4CDD8Aa544fF903a3d4853749",
-      },
-    },
-    oas_dm2mainnet: {
-      Proxy: {
-        Exchange: "0xa4Ef0aAc6BD6c07265433f82D3EABee7D1960496",
-        RoyaltyRegistry: "0x2f406E71Ff5Ca146A4B775C01211C745A4430d1a",
-        TransferProxy: "0xF020219090d4563D094fCd254D35b5C51bE5BBfC",
-        PlatformRegistry: "0x3CEA44C54ca034cFa5843fE66A0E12f089198cEb",
-      },
-    },
     oas_gesotest: {
       Proxy: {
         Exchange: "0xF4ADDB64881f8b235576897794933b91374CD33E",
@@ -342,10 +286,10 @@ const MARKET_V1 = {
     },
     oas_sgvmainnet: {
       Proxy: {
-        Exchange: '0xa4Ef0aAc6BD6c07265433f82D3EABee7D1960496',
-        RoyaltyRegistry: '0x2f406E71Ff5Ca146A4B775C01211C745A4430d1a',
-        TransferProxy: '0xF020219090d4563D094fCd254D35b5C51bE5BBfC',
-        PlatformRegistry: '0x3CEA44C54ca034cFa5843fE66A0E12f089198cEb'
+        Exchange: "0xa4Ef0aAc6BD6c07265433f82D3EABee7D1960496",
+        RoyaltyRegistry: "0x2f406E71Ff5Ca146A4B775C01211C745A4430d1a",
+        TransferProxy: "0xF020219090d4563D094fCd254D35b5C51bE5BBfC",
+        PlatformRegistry: "0x3CEA44C54ca034cFa5843fE66A0E12f089198cEb",
       },
     },
     oas_testnet: {
@@ -518,22 +462,6 @@ const COLLECTION = {
     },
     oas_mchmainnet: {
       NANAKUSA_FACTORY: "0x4ed6532D849ed1A220A3676b33442c63347d81E8",
-      NANAKUSA_ERC721_COLLECTION: "0x0000000000000000000000000000000000000000",
-    },
-    oas_bnvtest: {
-      NANAKUSA_FACTORY: "0x6d4673320282e15B44f962E50426Fc522eFA49da",
-      NANAKUSA_ERC721_COLLECTION: "0x0000000000000000000000000000000000000000",
-    },
-    oas_bnvmainnet: {
-      NANAKUSA_FACTORY: "0x6F7C01fF32417EE797CE0AD2836DfB10328e71E2",
-      NANAKUSA_ERC721_COLLECTION: "0x0000000000000000000000000000000000000000",
-    },
-    oas_dm2test: {
-      NANAKUSA_FACTORY: "0x77462878250e147876F272FFCb8fb1a48e793119",
-      NANAKUSA_ERC721_COLLECTION: "0x8db2cD47377BBb513b39459bB4cCcA1385dE224a",
-    },
-    oas_dm2mainnet: {
-      NANAKUSA_FACTORY: "0x8Ba75B8A05354746cF24D9f3e6942bE9561E8AA7",
       NANAKUSA_ERC721_COLLECTION: "0x0000000000000000000000000000000000000000",
     },
     oas_gesotest: {
